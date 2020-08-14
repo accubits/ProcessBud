@@ -33,6 +33,7 @@ Developers, keep checking us out 👇
 ## Built With
 
 Python 
+
 PyQt
 
 ## Contributing
@@ -41,7 +42,7 @@ Please read CONTRIBUTING.md for details on our code of conduct, and the process 
 
 ## Authors
 
-Vaishnavi Jithu 
+Vaishnavi G.P.
 
 ## License
 
