@@ -8,7 +8,7 @@ One Paragraph of project description goes here
 
 Are you a user here to check out our Bud?
 
-The easiest way to install ProcessBud is by using our one-click installer for Windows which you can get at [inset link]
+The easiest way to install ProcessBud is by using our one-click executable file for Windows which you can get at [Get it here](https://drive.google.com/file/d/1Nfi_zKRW5_TFeUOLImWioku5TzbWTAIh/view?usp=sharing). Please extract the ".zip" file and run "main.exe" file.
 
 Developers, keep checking us out 👇
 
@@ -20,15 +20,15 @@ Developers, keep checking us out 👇
 
 * Python 3.6 or above 
 
-  [Get it here](https://www.python.org/downloads/windows/)
+  [Get it here](https://www.python.org/downloads/)
 
 * PyQT v5
 
-  [Get it here](https://www.python.org/downloads/windows/)
+  [Get it here](https://www.python.org/downloads/)
 
 ### Installation tips
 
-* Ensure you have the [Extension]() file extracted to where the source files are located  
+* Ensure you have the [Extension](https://github.com/accubits/ProcessBud/blob/master/Extension.zip) file extracted to where the source files are located  
 
 ## Built With
 
