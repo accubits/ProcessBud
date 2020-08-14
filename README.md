@@ -5,8 +5,10 @@ One Paragraph of project description goes here
 
 ## Getting Started
 ### Windows
-The easiest way to install ProcessBud is by using our one-click installer for Windows which you can get at <>
 
+Are you a user here to check out our Bud?
+The easiest way to install ProcessBud is by using our one-click installer for Windows which you can get at [inset link]
+Developers, check this out 👇
 
 ### Prerequisites
 
