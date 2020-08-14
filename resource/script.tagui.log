@@ -1,0 +1,6 @@
+
+START - automation started - Thu Aug 13 2020 17:44:45 GMT+0530 (India Standard Time)
+https://stackoverflow.com/ - Stack Overflow - Where Developers Learn, Share, & Build Careers
+
+click /html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span
+ERROR - cannot find /html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span

@@ -1,0 +1,11 @@
+venv
+.idea
+_pycache_
+resource/tagui_py/tagui_py.in
+resource/tagui_py/tagui_py.log
+resource/tagui_py/tagui_py.out
+resource/tagui_py/tagui_py_windows.log
+resource/tagui.sikuli/tagui_windows.log
+resource/tagui.sikuli/tagui_sikuli.out
+resource/tagui.sikuli/tagui_sikuli.in
+resource/tagui.sikuli/tagui.log

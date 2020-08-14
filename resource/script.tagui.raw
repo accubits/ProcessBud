@@ -1,0 +1,8 @@
+https://stackoverflow.com/
+click /html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span
+read //*[@id="question-summary-63394914"] to readmsg
+echo readmsg
+py_step('readmsg = "' + readmsg + '"')
+py begin
+read_info(readmsg)
+py finish

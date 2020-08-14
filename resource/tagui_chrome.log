@@ -1,0 +1,408 @@
+[tagui] START  - listening for inputs
+
+[tagui] INPUT  - 
+[1] {"id":1,"method":"Page.setDownloadBehavior","params":{"behavior":"allow","downloadPath":"C:\\Users\\Accubits\\PycharmProjects\\RPABot\\resource"}}
+[tagui] OUTPUT - 
+[1] {"id":1,"result":{}}
+
+[tagui] INPUT  - 
+[2] {"id":2,"method":"Page.navigate","params":{"url":"https://stackoverflow.com/"}}
+[tagui] OUTPUT - 
+[2] {"id":2,"result":{"frameId":"BC009EA000E715C7A9DCC7F342CBBF4D","loaderId":"757482AFFD564ECB92DC3D6CBB3222E7"}}
+
+[tagui] INPUT  - 
+[3] {"id":3,"method":"Runtime.evaluate","params":{"expression":"document.title"}}
+[tagui] OUTPUT - 
+[3] {"id":3,"result":{"result":{"type":"string","value":"Stack Overflow - Where Developers Learn, Share, & Build Careers"}}}
+
+[tagui] INPUT  - 
+[4] {"id":4,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[4] {"id":4,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[5] {"id":5,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[5] {"id":5,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[6] {"id":6,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[6] {"id":6,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[7] {"id":7,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[7] {"id":7,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[8] {"id":8,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[8] {"id":8,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[9] {"id":9,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[9] {"id":9,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[10] {"id":10,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[10] {"id":10,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[11] {"id":11,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[11] {"id":11,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[12] {"id":12,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[12] {"id":12,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[13] {"id":13,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[13] {"id":13,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[14] {"id":14,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[14] {"id":14,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[15] {"id":15,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[15] {"id":15,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[16] {"id":16,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[16] {"id":16,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[17] {"id":17,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[17] {"id":17,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[18] {"id":18,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[18] {"id":18,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[19] {"id":19,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[19] {"id":19,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[20] {"id":20,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[20] {"id":20,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[21] {"id":21,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[21] {"id":21,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[22] {"id":22,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[22] {"id":22,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[23] {"id":23,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[23] {"id":23,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[24] {"id":24,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[24] {"id":24,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[25] {"id":25,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[25] {"id":25,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[26] {"id":26,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[26] {"id":26,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[27] {"id":27,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[27] {"id":27,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[28] {"id":28,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[28] {"id":28,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[29] {"id":29,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[29] {"id":29,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[30] {"id":30,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[30] {"id":30,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[31] {"id":31,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[31] {"id":31,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[32] {"id":32,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[32] {"id":32,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[33] {"id":33,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[33] {"id":33,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[34] {"id":34,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[34] {"id":34,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[35] {"id":35,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[35] {"id":35,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[36] {"id":36,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[36] {"id":36,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[37] {"id":37,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[37] {"id":37,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[38] {"id":38,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[38] {"id":38,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[39] {"id":39,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[39] {"id":39,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[40] {"id":40,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[40] {"id":40,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[41] {"id":41,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[41] {"id":41,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[42] {"id":42,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[42] {"id":42,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[43] {"id":43,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[43] {"id":43,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[44] {"id":44,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[44] {"id":44,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[45] {"id":45,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[45] {"id":45,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[46] {"id":46,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[46] {"id":46,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[47] {"id":47,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[47] {"id":47,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[48] {"id":48,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[48] {"id":48,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[49] {"id":49,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[49] {"id":49,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[50] {"id":50,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[50] {"id":50,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[51] {"id":51,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[51] {"id":51,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[52] {"id":52,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[52] {"id":52,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[53] {"id":53,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[53] {"id":53,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[54] {"id":54,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[54] {"id":54,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[55] {"id":55,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[55] {"id":55,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[56] {"id":56,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[56] {"id":56,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[57] {"id":57,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[57] {"id":57,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[58] {"id":58,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[58] {"id":58,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[59] {"id":59,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[59] {"id":59,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[60] {"id":60,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[60] {"id":60,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[61] {"id":61,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[61] {"id":61,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[62] {"id":62,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[62] {"id":62,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[63] {"id":63,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[63] {"id":63,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[64] {"id":64,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[64] {"id":64,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[65] {"id":65,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[65] {"id":65,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[66] {"id":66,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[66] {"id":66,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[67] {"id":67,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[67] {"id":67,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[68] {"id":68,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[68] {"id":68,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[69] {"id":69,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[69] {"id":69,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[70] {"id":70,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[70] {"id":70,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[71] {"id":71,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[71] {"id":71,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[72] {"id":72,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[72] {"id":72,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[73] {"id":73,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[73] {"id":73,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[74] {"id":74,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[74] {"id":74,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[75] {"id":75,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[75] {"id":75,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[76] {"id":76,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[76] {"id":76,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[77] {"id":77,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[77] {"id":77,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[78] {"id":78,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[78] {"id":78,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[79] {"id":79,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[79] {"id":79,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[80] {"id":80,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[80] {"id":80,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] INPUT  - 
+[81] {"id":81,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[4]/div[1]/div[1]/nav/ol/li[2]/ol/li[2]/a/span',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[81] {"id":81,"result":{"result":{"type":"number","value":0,"description":"0"}}}
+
+[tagui] FINISH - stopped listening

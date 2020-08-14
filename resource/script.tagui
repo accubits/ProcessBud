@@ -1,0 +1,9 @@
+
+https://www.test.com/
+read /html/body/div[1]/div/div/div[2]/div/div/div/div/div[2]/div[3]/div[1]/div/div/table/tbody/tr[5]/td[2]/span[2] to readmsg
+echo readmsg
+py_step('readmsg = "' + readmsg + '"')
+py begin
+read_info(readmsg)
+py finish
+click /html/body/div[1]/div/div/div[2]/div/div/div/div/div[2]/div[3]/div[1]/div/div/table/tbody/tr[6]/td[2]/span[2]

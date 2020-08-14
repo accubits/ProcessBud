@@ -1,0 +1,7 @@
+{
+  "name": "SendMail",
+  "main": "main.tagui",
+  "version": "0.0.1",
+  "config": "Debug",
+  "arguments": "debug"
+}

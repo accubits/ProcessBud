@@ -1,0 +1,8 @@
+2020/07/10-10:20:17.896 2c88 Reusing MANIFEST C:\Users\Accubits\PycharmProjects\RPABot\resource\chrome\tagui_user_profile\Default\IndexedDB\https_9ba1d36ac373802feedac84639faec2d.safeframe.googlesyndication.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/10-10:20:17.896 2c88 Recovering log #7
+2020/07/10-10:20:17.896 2c88 Reusing old log C:\Users\Accubits\PycharmProjects\RPABot\resource\chrome\tagui_user_profile\Default\IndexedDB\https_9ba1d36ac373802feedac84639faec2d.safeframe.googlesyndication.com_0.indexeddb.leveldb/000007.log 
+2020/07/10-10:20:26.475 1f4c Level-0 table #11: started
+2020/07/10-10:20:26.483 1f4c Level-0 table #11: 0 bytes OK
+2020/07/10-10:20:26.525 1f4c Delete type=0 #7
+2020/07/10-10:20:26.525 1f4c Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2020/07/10-10:20:26.526 1f4c Manual compaction at level-1 from (begin) .. (end); will stop at (end)
