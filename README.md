@@ -1,6 +1,5 @@
 # ProcessBud
-One Paragraph of project description goes here
-
+ProcessBud is an RPA tool for automating the routine tasks with in the software applications
 
 
 ## Getting Started
@@ -24,7 +23,7 @@ Developers, keep checking us out 👇
 
 ### Installation tips
 
-* All major dependicies for this project are included in requirement.txt  
+* All major dependencies for this project are included in requirement.txt  
 * Ensure you have the [Extension](https://github.com/accubits/ProcessBud/blob/master/Extension.zip) file extracted to where the source files are located  
 
 ## Built With
