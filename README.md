@@ -22,12 +22,9 @@ Developers, keep checking us out 👇
 
   [Get it here](https://www.python.org/downloads/)
 
-* PyQT v5
-
-  [Get it here](https://www.python.org/downloads/)
-
 ### Installation tips
 
+* All major dependicies for this project are included in requirement.txt  
 * Ensure you have the [Extension](https://github.com/accubits/ProcessBud/blob/master/Extension.zip) file extracted to where the source files are located  
 
 ## Built With
