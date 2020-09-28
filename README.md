@@ -1,4 +1,4 @@
-![Logo](processbud_black.jpg)
+![Logo](/Logo/processbud_white.jpg)
 # ProcessBud
 ProcessBud is an RPA tool for automating the routine tasks with in the software applications
 
