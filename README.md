@@ -1,3 +1,4 @@
+![GitHub Logo](/Users/mekhaanil/Downloads/processbud_white.jpg)
 # ProcessBud
 ProcessBud is an RPA tool for automating the routine tasks with in the software applications
 
