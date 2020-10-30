@@ -1,0 +1,5 @@
+2020/07/08-17:06:16.163 2e04 Reusing MANIFEST C:\Users\Accubits\PycharmProjects\RPA_Interface\resource\chrome\tagui_user_profile\Default\IndexedDB\https_af8fc0c0139e569b6b36c644fb40aa92.safeframe.googlesyndication.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/08-17:06:23.708 3ab8 Level-0 table #5: started
+2020/07/08-17:06:23.757 3ab8 Level-0 table #5: 439 bytes OK
+2020/07/08-17:06:23.802 3ab8 Delete type=0 #3
+2020/07/08-17:06:23.802 3ab8 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

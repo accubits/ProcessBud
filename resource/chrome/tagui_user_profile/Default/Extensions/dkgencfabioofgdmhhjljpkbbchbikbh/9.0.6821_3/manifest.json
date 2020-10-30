@@ -1,0 +1,24 @@
+{
+   "background": {
+      "scripts": [ "Loader.js" ]
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "ContentLoader.js" ],
+      "matches": [ "http://*/*", "https://*/*", "file://*/*" ],
+      "run_at": "document_start"
+   } ],
+   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+   "description": "UiPath component for browser interaction",
+   "icons": {
+      "128": "uiPath128.png",
+      "16": "uiPath16.png",
+      "48": "uiPath48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0TFIHNXG3ZgTr+ZsFY20T0hIrveDv/l4V0cFuBF8605rFz+JktnR5SQbOJIbGxW82AynUcxkCncKTMNn8nHhxS1DlPD7AGDCAMOxO0I/3g2mkDhueGU1cfPNo0x9TtH8W0LnkrOvTOYT3G80RhPbyFEC3e+pQM+5pZM6NETY7MjgrxwfTc2nmoH4kPSL0r95c0ad8vPwmlPf/pwT2fLJzf6Yh8Sa4F6bkpfe2/sE5otf3QxwMjWYQPeb4YHlr8+arQvSKVdXbRfQhPHksf8qYHkGmCt1y/8DGVo/R8h78SfQv8UVm9oVuxlTfG/H9RVHYUwAh4ho1Xej+4SuPGym3QIDAQAB",
+   "manifest_version": 2,
+   "name": "UiPath Web Automation",
+   "permissions": [ "management", "nativeMessaging", "tabs", "webNavigation", "webRequest", "\u003Call_urls>" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "9.0.6821"
+}

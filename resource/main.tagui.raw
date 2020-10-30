@@ -1,0 +1,43 @@
+email = ""
+message = ""
+subject = ""
+//< [DialogInput] comment="" message="email;variable" title="Please enter Email;input" default= ; resultToVariable="true" variable="email;variable"
+vision_step('email = """' + email + '"""')
+    vision begin
+ocr_text = input(email," ",u"\u0050\u006c\u0065\u0061\u0073\u0065\u0020\u0065\u006e\u0074\u0065\u0072\u0020\u0045\u006d\u0061\u0069\u006c",False)
+tagui_text = open('tagui.sikuli/tagui_sikuli.txt','w')
+tagui_text.write(ocr_text.decode('utf8')); tagui_text.close()
+vision finish
+email = fetch_sikuli_text()
+///>
+//< [DialogInput] comment="" message="subject;variable" title="Please enter subject;input" default= ; resultToVariable="true" variable="subject;variable"
+vision_step('subject = """' + subject + '"""')
+    vision begin
+ocr_text = input(subject," ",u"\u0050\u006c\u0065\u0061\u0073\u0065\u0020\u0065\u006e\u0074\u0065\u0072\u0020\u0073\u0075\u0062\u006a\u0065\u0063\u0074",False)
+tagui_text = open('tagui.sikuli/tagui_sikuli.txt','w')
+tagui_text.write(ocr_text.decode('utf8')); tagui_text.close()
+vision finish
+subject = fetch_sikuli_text()
+///>
+//< [DialogInput] comment="" message="message;variable" title="Please enter message;input" default= ; resultToVariable="true" variable="message;variable"
+vision_step('message = """' + message + '"""')
+    vision begin
+ocr_text = input(message," ",u"\u0050\u006c\u0065\u0061\u0073\u0065\u0020\u0065\u006e\u0074\u0065\u0072\u0020\u006d\u0065\u0073\u0073\u0061\u0067\u0065",False)
+tagui_text = open('tagui.sikuli/tagui_sikuli.txt','w')
+tagui_text.write(ocr_text.decode('utf8')); tagui_text.close()
+vision finish
+message = fetch_sikuli_text()
+///>
+//< [SendMail] comment=""  host="smtp.gmail.com;input" port="587;input" username="dummytestrpa@gmail.com;input" password="abcd@1234;input" to="email;variable" cc=";" bcc=";" subject="subject;variable" message="message;variable" replay-message-id=";"
+py_step('email = """' + email + '"""')
+py_step('subject = """' + subject + '"""')
+py_step('message = """' + message + '"""')
+    py begin
+SendMail('smtp.gmail.com',587,'dummytestrpa@gmail.com','abcd@1234',email,'','',subject,message,'')
+py finish
+//>
+//< [DialogPopup] comment="" message="Process completed;input" title="Moxie RPA;"
+    vision begin
+popup(u"\u0050\u0072\u006f\u0063\u0065\u0073\u0073\u0020\u0063\u006f\u006d\u0070\u006c\u0065\u0074\u0065\u0064",u"\u004d\u006f\u0078\u0069\u0065\u0020\u0052\u0050\u0041")
+vision finish
+///>
