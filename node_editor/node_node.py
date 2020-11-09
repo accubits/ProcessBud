@@ -149,10 +149,20 @@ class Node(Serializable):
             # clear old sockets
             if hasattr(self, 'inputs') and hasattr(self, 'outputs'):
                 # remove grSockets from scene
+
                 for socket in (self.inputs+self.outputs):
-                    self.scene.grScene.removeItem(socket.grSocket)
-                self.inputs = []
-                self.outputs = []
+                    if hasattr(socket,'grSocket'):
+                        self.scene.grScene.removeItem(socket.grSocket)
+                        self.inputs = []
+                        self.outputs = []
+                    else:
+                        self.inputs = []
+                        # self.outputs = []
+
+                        # self.outputs = []
+
+                # self.inputs = []
+                # self.outputs = []
 
         # create new sockets
         counter = 0
@@ -553,6 +563,7 @@ class Node(Serializable):
                     )
                     self.inputs.append(found)  # append newly created input to the list
                 found.deserialize(socket_data, hashmap, restore_id)
+                # print(found)
 
 
             for socket_data in data['outputs']:
@@ -573,6 +584,7 @@ class Node(Serializable):
                     )
                     self.outputs.append(found)  # append newly created output to the list
                 found.deserialize(socket_data, hashmap, restore_id)
+                # print(found)
 
         except Exception as e: dumpException(e)
 
@@ -580,6 +592,10 @@ class Node(Serializable):
         # so far the rest was ok, now as last step the content...
         if isinstance(self.content, Serializable):
             res = self.content.deserialize(data['content'], hashmap)
+
+            print("before deserialisation")
+            print(data['content'])
+
             return res
 
 

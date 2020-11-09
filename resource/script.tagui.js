@@ -1416,8 +1416,8 @@ var desktop_path = 'C:/Users/DELL/Desktop';
 
 var temp_path = 'C:/Users/DELL/AppData/Local/Temp';
 
-casper.then(function() {techo('Wait 2');});
-casper.then(function() {casper.wait(2000, function() {});});
+casper.then(function() {techo('Wait');});
+casper.then(function() {casper.wait(5000, function() {});});
 
 casper.then(function() {techo('\n' + this.getCurrentUrl() + ' - ' + this.getTitle());
 techo('FINISH - automation finished - ' + ((Date.now()-automation_start_time)/1000).toFixed(1) + 's\n');});

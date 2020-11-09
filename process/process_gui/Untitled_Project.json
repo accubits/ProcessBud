@@ -1,17 +1,17 @@
 {
-    "id": 2663340505184,
+    "id": 1682499172896,
     "scene_width": 64000,
     "scene_height": 64000,
     "nodes": [
         {
-            "id": 2663341096296,
+            "id": 1682513189744,
             "title": "Wait",
-            "pos_x": -455.0,
-            "pos_y": -164.0,
+            "pos_x": -414.0,
+            "pos_y": -141.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 2663341151344,
+                    "id": 1682513344832,
                     "index": 0,
                     "multi_edges": true,
                     "position": 5,
@@ -20,81 +20,10 @@
             ],
             "start": "1",
             "content": {
-                "value": "2"
-            },
-            "op_code": 2
-        },
-        {
-            "id": 2663341151848,
-            "title": "Open url",
-            "pos_x": -237.0,
-            "pos_y": -71.0,
-            "inputs": [
-                {
-                    "id": 2663341151736,
-                    "index": 0,
-                    "multi_edges": false,
-                    "position": 2,
-                    "socket_type": 1
-                }
-            ],
-            "outputs": [
-                {
-                    "id": 2663341151960,
-                    "index": 0,
-                    "multi_edges": true,
-                    "position": 5,
-                    "socket_type": 1
-                }
-            ],
-            "start": "0",
-            "content": {
-                "value": "https://www.w3schools.com/"
-            },
-            "op_code": 3
-        },
-        {
-            "id": 2663341213008,
-            "title": "Wait",
-            "pos_x": -35.0,
-            "pos_y": 24.0,
-            "inputs": [
-                {
-                    "id": 2663341212952,
-                    "index": 0,
-                    "multi_edges": false,
-                    "position": 2,
-                    "socket_type": 1
-                }
-            ],
-            "outputs": [
-                {
-                    "id": 2663341213232,
-                    "index": 0,
-                    "multi_edges": true,
-                    "position": 5,
-                    "socket_type": 1
-                }
-            ],
-            "start": "0",
-            "content": {
-                "value": "1"
+                "value": ""
             },
             "op_code": 2
         }
     ],
-    "edges": [
-        {
-            "id": 2663341241456,
-            "edge_type": 2,
-            "start": 2663341151960,
-            "end": 2663341212952
-        },
-        {
-            "id": 2663341242520,
-            "edge_type": 2,
-            "start": 2663341151344,
-            "end": 2663341151736
-        }
-    ]
+    "edges": []
 }

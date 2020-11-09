@@ -1,15 +1,10 @@
 import json
-
-from PyQt5.QtGui import *
-from PyQt5.QtCore import *
 from process.process_gui.process_conf import *
 from node_editor.node_editor_widget import NodeEditorWidget
 from process.process_gui.process_node_base import *
 from node_editor.node_edge import EDGE_TYPE_DIRECT, EDGE_TYPE_BEZIER
 from node_editor.node_graphics_view import MODE_EDGE_DRAG  # , MODE_EDGES_REROUTING
 from node_editor.utils import dumpException
-
-from node_editor.node_editor_window import NodeEditorWindow
 
 DEBUG = False
 DEBUG_CONTEXT = False
@@ -100,8 +95,7 @@ class ProcessSubWindow(NodeEditorWidget):
             if DEBUG: print("GOT DROP: [%d] '%s'" % (op_code, text), "mouse:", mouse_position, "scene:", scene_position)
 
             try:
-                # print("Node list is")
-                # print(self.scene.node_list())
+
                 node = get_class_from_opcode(op_code)(self.scene)
                 node.setPos(scene_position.x(), scene_position.y())
                 self.scene.history.storeHistory("Created node %s" % node.__class__.__name__)
@@ -136,6 +130,8 @@ class ProcessSubWindow(NodeEditorWidget):
             dumpException(e)
 
     def handleNodeContextMenu(self, event):
+        action = ""
+        print("event", event)
         if DEBUG_CONTEXT: print("CONTEXT: NODE")
 
         selected = None
@@ -147,14 +143,88 @@ class ProcessSubWindow(NodeEditorWidget):
             selected = item.node
         if hasattr(item, 'socket'):
             selected = item.socket.node
+        data = self.scene.clipboard.serializeSelected(delete=False)
 
         if selected:
-            context_menu = QMenu(self)
-            Copy = context_menu.addAction("Copy")
-            Cut = context_menu.addAction("Cut")
-            Del = context_menu.addAction("Delete")
-            start = context_menu.addAction("Make it start")
-            action = context_menu.exec_(self.mapToGlobal(event.pos()))
+            if len(data['nodes']) > 0:
+                context_menu = QMenu(self)
+                Copy = context_menu.addAction("Copy")
+                Cut = context_menu.addAction("Cut")
+                Del = context_menu.addAction("Delete")
+                if item.node.start == "0":
+                    start = context_menu.addAction("Make it start")
+                action = context_menu.exec_(self.mapToGlobal(event.pos()))
+                if action == Copy:
+                    self.pasteval = 1
+                    data = self.scene.clipboard.serializeSelected(delete=False)
+                    str_data = json.dumps(data, indent=4)
+                    QApplication.instance().clipboard().setText(str_data)
+                elif action == Cut:
+                    self.pasteval = 1
+                    data = self.scene.clipboard.serializeSelected(delete=True)
+                    str_data = json.dumps(data, indent=4)
+                    QApplication.instance().clipboard().setText(str_data)
+                elif action == Del:
+                    nodelist = self.scene.node_list()
+                    self.nextstartdt = ""
+                    nodelist = sorted(nodelist, key=lambda x: x.pos.x(), reverse=False)
+                    if item.node.start == "1":
+                        del_node = 0
+                        for node in nodelist:
+
+                            if node.start == "1":
+                                del_node = 1
+                            else:
+
+                                if del_node == 1:
+                                    print("next start node", node)
+                                    del_node = 0
+                                    self.nextstartdt = node
+                                    for socket in self.nextstartdt.inputs:
+                                        socket.delete()
+                                    self.nextstartdt.start = "1"
+                                    self.nextstartdt.content.property_label.setText("Properties | START")
+
+                        self.scene.getView().deleteSelected()
+
+                        inputs = [1]
+                        outputs = [1]
+                        for node in nodelist:
+                            if node.start == "0":
+                                node.initSockets(inputs, outputs)
+                    else:
+                        self.scene.getView().deleteSelected()
+
+                elif action == start:
+
+                    nodelist = self.scene.node_list()
+                    inputs = [1]
+                    outputs = [1]
+
+                    for node in nodelist:
+
+                        if node == item.node:
+                            node.start = "1"
+                            node.content.property_label.setText("Properties | Start")
+
+                            for socket in node.inputs:
+                                if hasattr(socket, 'grSocket'):
+                                    socket.delete()
+                                    # if socket.hasEdge():
+                                    for edge in socket.edges:
+                                        if DEBUG: print("    - removing from socket:", socket, "edge:", edge)
+                                        edge.remove()
+
+                            node.inputs = []
+                        elif node.start == "1":
+                            node.start = "0"
+                            node.content.property_label.setText("Properties")
+                            node.initSockets(inputs, outputs)
+
+                        else:
+                            node.start = "0"
+                            node.content.property_label.setText("Properties")
+
         else:
 
             context_menu = QMenu(self)
@@ -162,27 +232,6 @@ class ProcessSubWindow(NodeEditorWidget):
             action = context_menu.exec_(self.mapToGlobal(event.pos()))
 
         if DEBUG_CONTEXT: print("got item:", selected)
-        if selected and action == Copy:
-            self.pasteval = 1
-            data = self.scene.clipboard.serializeSelected(delete=False)
-            str_data = json.dumps(data, indent=4)
-            QApplication.instance().clipboard().setText(str_data)
-            print(selected)
-        elif selected and action == Cut:
-            self.pasteval = 1
-            data = self.scene.clipboard.serializeSelected(delete=True)
-            str_data = json.dumps(data, indent=4)
-            QApplication.instance().clipboard().setText(str_data)
-        elif selected and action == Del:
-            self.scene.getView().deleteSelected()
-        elif selected and action == start:
-            nodelist = self.scene.node_list()
-            for nodedt in nodelist:
-                nodedt.start = "0"
-                nodedt.content.property_label.setText("Properties")
-
-            item.node.content.property_label.setText("Properties | START")
-            item.node.start = "1"
 
     def handleEdgeContextMenu(self, event):
         if DEBUG_CONTEXT: print("CONTEXT: EDGE")
@@ -216,7 +265,6 @@ class ProcessSubWindow(NodeEditorWidget):
     def handleNewNodeContextMenu(self, event):
         if self.pasteval == 1:
             context_menu = QMenu(self)
-            print("No selection")
             Paste = context_menu.addAction("Paste")
             action = context_menu.exec_(self.mapToGlobal(event.pos()))
             if action == Paste:
