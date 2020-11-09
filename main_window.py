@@ -9,7 +9,6 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 
-
 from node_editor.utils import loadStylesheets
 from node_editor.node_editor_window import NodeEditorWindow
 from process.process_gui.process_sub_window import ProcessSubWindow
@@ -25,22 +24,16 @@ Edge.registerEdgeValidator(edge_validator_debug)
 Edge.registerEdgeValidator(edge_cannot_connect_two_outputs_or_two_inputs)
 Edge.registerEdgeValidator(edge_cannot_connect_input_and_output_of_same_node)
 
-
 from process.properties import PropertiesPanel
 from process.process_gui import process_run
 
-
-
-
 DEBUG = False
-
 
 
 class main_Window(NodeEditorWindow):
     def __init__(self, parent=None):
         self.threadpool = QThreadPool()
         super().__init__(parent)
-
 
     def initUI(self):
         self.showMaximized()
@@ -71,7 +64,6 @@ class main_Window(NodeEditorWindow):
 
         self.createNodesDock()
         self.outputDock()
-        # self.propertiesDock("none","")
         self.createActions()
         self.createMenus()
         self.createToolBars()
@@ -192,8 +184,6 @@ class main_Window(NodeEditorWindow):
         process_run.runProcess.execute_process(self)
         runner = Runner(self.outputWidget)
         self.threadpool.start(runner)
-
-
 
     def createMenus(self):
         # super().createMenus()
@@ -452,8 +442,6 @@ class main_Window(NodeEditorWindow):
     def outputDock(self):
 
         self.outputWidget = QListWidget()
-        # self.outputWidget = QPushButton("test")
-
         self.outDock = QDockWidget("Output Panel")
         self.outDock.setWidget(self.outputWidget)
         self.outDock.setFloating(True)
@@ -525,8 +513,6 @@ class Runner(QRunnable):
     def __init__(self, out_list, parent=None):
         self.outputWidget = out_list
         super().__init__()
-        # self.run()
-
 
     @pyqtSlot()
     def run(self):
@@ -538,22 +524,20 @@ class Runner(QRunnable):
         script = os.path.join("resource", "script.tagui")
         with open(script) as f:
             if 'http' in f.read():
-                command="cd " + dir + " & tagui script.tagui chrome"
-                # subprocess.call(command, shell=True)
+                command = "cd " + dir + " & tagui script.tagui chrome"
 
             else:
 
-                command="cd " + dir + " & tagui script.tagui"
+                command = "cd " + dir + " & tagui script.tagui"
             proc = subprocess.Popen(command,
                                     shell=True,
                                     stdin=subprocess.PIPE,
                                     stdout=subprocess.PIPE,
                                     )
-            # output=proc.communicate('\tstdin: to stdin\n')
+
             output = proc.communicate()[0]
             output = output.decode('UTF-8')
-            # print(output)
+
             self.outputWidget.addItem(output)
 
         time.sleep(1)
-
