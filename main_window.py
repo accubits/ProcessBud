@@ -5,15 +5,10 @@ from subprocess import PIPE, run
 import time
 import logging
 
-from PyQt5 import QtCore
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 
-import click
-from node_editor.node_graphics_scene import QDMGraphicsScene
-from node_editor.node_graphics_view import QDMGraphicsView
-from node_editor.node_scene import Scene
 
 from node_editor.utils import loadStylesheets
 from node_editor.node_editor_window import NodeEditorWindow
@@ -30,51 +25,22 @@ Edge.registerEdgeValidator(edge_validator_debug)
 Edge.registerEdgeValidator(edge_cannot_connect_two_outputs_or_two_inputs)
 Edge.registerEdgeValidator(edge_cannot_connect_input_and_output_of_same_node)
 
-from click import clickWindow
+
 from process.properties import PropertiesPanel
 from process.process_gui import process_run
 
-# images for the dark skin
+
 
 
 DEBUG = False
 
-
-# class QPlainTextEditLogger(logging.Handler):
-#     def __init__(self, parent=None):
-#         super().__init__()
-#
-#         self.widget = QPlainTextEdit(parent)
-#         self.widget.setReadOnly(True)
-#
-#     def emit(self, record):
-#         msg = self.format(record)
-#         self.widget.textCursor().appendPlainText(msg)
-#
-#     def write(self, m):
-#         pass
 
 
 class main_Window(NodeEditorWindow):
     def __init__(self, parent=None):
         self.threadpool = QThreadPool()
         super().__init__(parent)
-        # self.out=outPanel()
-        # self.out.runsignal.connect(lambda: self.addToOutput(line=""))
 
-        # logTextBox = QPlainTextEditLogger(self)
-        # # You can format what is printed to text box
-        # logTextBox.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
-        # logging.getLogger().addHandler(logTextBox)
-        # # You can control the logging level
-        # logging.getLogger().setLevel(logging.DEBUG)
-        # self._button = QPushButton(self)
-        # self._button.setText('Test Me')
-        # layout = QVBoxLayout()
-        # layout.addWidget(self._button)
-        # layout.addWidget(logTextBox.widget)
-        # self.setLayout(layout)
-        # print(logTextBox)
 
     def initUI(self):
         self.showMaximized()
