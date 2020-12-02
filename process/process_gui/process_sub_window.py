@@ -27,6 +27,40 @@ class ProcessSubWindow(NodeEditorWidget):
 
         self._close_event_listeners = []
         self.pasteval = 0
+        # self.variableDtDock()
+
+    # def variableDtDock(self):
+    #     # current_nodeeditor = self.getCurrentNodeEditorWidget()
+    #     # if current_nodeeditor==nodeeditor:
+    #
+    #     print("Variable List")
+    #     self.variableWidget = QWidget(self)
+    #     # creating a vertical box layout
+    #     self.variableLayout = QVBoxLayout(self)
+    #     # self.add = QPushButton("+", self)
+    #     self.variableTable = QTableWidget()
+    #
+    #     # adding these buttons to the layout
+    #     # self.variableLayout.addWidget(self.add)
+    #     self.variableLayout.addWidget(self.variableTable)
+    #     # setting the layout to the widget
+    #     self.variableWidget.setLayout(self.variableLayout)
+    #     self.variableTable.setColumnCount(4)
+    #     self.variableTable.setHorizontalHeaderItem(0, QTableWidgetItem("Name"))
+    #     self.variableTable.setHorizontalHeaderItem(1, QTableWidgetItem("Type"))
+    #     self.variableTable.setHorizontalHeaderItem(2, QTableWidgetItem("Default value"))
+    #     self.variableTable.setHorizontalHeaderItem(3, QTableWidgetItem("Action"))
+    #     self.variableTable.horizontalHeader().setSectionResizeMode(0, QHeaderView.Stretch)
+    #     self.variableTable.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
+    #     self.variableTable.horizontalHeader().setSectionResizeMode(2, QHeaderView.Stretch)
+    #     self.variableDock = QDockWidget("Variable Panel")
+    #     self.variableDock.setWidget(self.variableWidget)
+    #     self.variableDock.setFloating(True)
+
+        # self.addDockWidget(Qt.BottomDockWidgetArea, self.variableDock)
+
+
+
 
     def getNodeClassFromData(self, data):
         if 'op_code' not in data: return Node

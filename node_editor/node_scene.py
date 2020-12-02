@@ -5,6 +5,9 @@ A module containing the representation of Scene
 import os
 import json
 from collections import OrderedDict
+
+from PyQt5.QtWidgets import QComboBox
+
 from node_editor.utils import dumpException
 from node_editor.node_serializable import Serializable
 from node_editor.node_graphics_scene import QDMGraphicsScene
@@ -13,6 +16,8 @@ from node_editor.node_edge import Edge
 from node_editor.node_scene_history import SceneHistory
 from node_editor.node_scene_clipboard import SceneClipboard
 from node_editor.utils import pp
+# from pymongo import MongoClient
+from database import Database
 
 DEBUG_REMOVE_WARNINGS = False
 
@@ -65,6 +70,13 @@ class Scene(Serializable):
 
         self.grScene.itemSelected.connect(self.onItemSelected)
         self.grScene.itemsDeselected.connect(self.onItemsDeselected)
+        # self.client = MongoClient("mongodb://localhost:27017/")
+        # self.db = self.client.ProcessBud
+        # self.projectDt = self.db.Projects
+        # self.variableDt = self.db.Variables
+        # print(MongoClient)
+
+        Database.initialize()
 
     @property
     def has_been_modified(self):
@@ -316,16 +328,62 @@ class Scene(Serializable):
             # self.has_been_modified = False
             # self.filename = filename
 
-    def saveToFile(self, filename: str):
+    def saveToFile(self, filename: str, tbl):
         """
         Save this `Scene` to the file on disk.
 
         :param filename: where to save this scene
         :type filename: ``str``
         """
+        print("tbl", tbl)
+
+
         with open(filename, "w") as file:
             file.write(json.dumps(self.serialize(), indent=4))
             print("saving to", filename, "was successfull.")
+            pr_data = Database.find('Projects', {"name": filename})
+            print("pr_data", pr_data)
+            print("length", pr_data.count())
+            for item in pr_data:
+                pr_id = item.get('_id')
+                print("pr_id", pr_id)
+
+            if pr_data.count() > 0:
+                print("project name already added")
+                result = Database.del_many('Variables', {"Pr_id": pr_id})
+                print("delete count:", result.deleted_count)
+            else:
+                pr_name = {"name": filename}
+                insertProject = Database.insert('Projects', pr_name)
+                print("Project Id ", insertProject.inserted_id)
+                pr_id = insertProject.inserted_id
+
+            if tbl == "":
+                print("Table Null")
+            else:
+
+                rowCount = tbl.rowCount()
+                columnCount = tbl.columnCount()
+                for row in range(rowCount):
+                    rowData = {"Name": "", "Type": "", "Default value": "", "Pr_id": ""}
+                    rowData["Pr_id"] = pr_id
+                    for column in range(columnCount):
+                        widgetItem = tbl.item(row, column)
+                        heading = tbl.horizontalHeaderItem(column).text()
+                        if heading == "Name" and widgetItem is not None:
+                            rowData["Name"] = widgetItem.text()
+                        elif heading == "Type":
+                            combotxt = tbl.cellWidget(row, column)
+                            current_value = combotxt.currentText()
+                            rowData["Type"] = current_value
+
+                        elif heading == "Value" and widgetItem is not None:
+
+                            rowData["Default value"] = widgetItem.text()
+
+
+                    # self.variableDt.insert_one(rowData)
+                    Database.insert('Variables', rowData)
 
             self.has_been_modified = False
             self.filename = filename

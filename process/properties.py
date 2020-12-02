@@ -12,7 +12,7 @@ class PropertiesPanel(QDockWidget):
 
         self.propertytab(self)
 
-    def propertytab(self, controls, obj_val, node_editor):
+    def propertytab(self, controls, obj_val, node_editor, tbl):
         print(obj_val)
         if not hasattr(self, 'nodesPropertyDock'):
             self.nodesPropertyWidget = QListWidget()
@@ -42,25 +42,34 @@ class PropertiesPanel(QDockWidget):
             print("type")
             self.nodesPropertyDock.setWidget(type.typeWindow(obj_val, node_editor))
         elif controls == "Read":
-            import readtext
+            import read_text
             print("read")
-            self.nodesPropertyDock.setWidget(readtext.readtextWindow(obj_val, node_editor))
+            self.nodesPropertyDock.setWidget(read_text.readtextWindow(obj_val, node_editor))
         elif controls == "Fetch Email":
-            import fetchemail
+            import fetch_email
             print("read")
-            self.nodesPropertyDock.setWidget(fetchemail.fetchemailWindow(obj_val, node_editor))
+            self.nodesPropertyDock.setWidget(fetch_email.fetchemailWindow(obj_val, node_editor))
         elif controls == "Open Session":
-            import openimap
+            import open_imap
             print("open session")
-            self.nodesPropertyDock.setWidget(openimap.openimapWindow(obj_val, node_editor))
+            self.nodesPropertyDock.setWidget(open_imap.openimapWindow(obj_val, node_editor))
         elif controls == "Close Session":
-            import closeimap
+            import close_imap
             print("close session")
-            self.nodesPropertyDock.setWidget(closeimap.closeimapWindow(obj_val, node_editor))
+            self.nodesPropertyDock.setWidget(close_imap.closeimapWindow(obj_val, node_editor))
         elif controls == "Send Email":
-            import sendemail
+            import send_email
             print("send email")
-            self.nodesPropertyDock.setWidget(sendemail.sendemailWindow(obj_val, node_editor))
+            self.nodesPropertyDock.setWidget(send_email.sendemailWindow(obj_val, node_editor))
+        elif controls == "Loop start":
+            import loop_start
+            print("loop started")
+            self.nodesPropertyDock.setWidget(loop_start.loopStartWindow(obj_val, node_editor, tbl))
+        elif  controls=="Loop end":
+            import loop_end
+            print("loop ended")
+            self.nodesPropertyDock.setWidget(loop_end.loopEndWindow(obj_val, node_editor, tbl))
+
         self.nodesPropertyDock.widget().setMinimumSize(QSize(350, 200))
         self.nodesPropertyDock.setFloating(False)
         self.addDockWidget(Qt.RightDockWidgetArea, self.nodesPropertyDock)

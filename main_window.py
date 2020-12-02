@@ -4,7 +4,9 @@ import subprocess
 from subprocess import PIPE, run
 import time
 import logging
-
+# from pymongo import Connection
+# from pymongo import MongoClient
+from PyQt5 import QtCore
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -27,6 +29,8 @@ Edge.registerEdgeValidator(edge_cannot_connect_input_and_output_of_same_node)
 from process.properties import PropertiesPanel
 from process.process_gui import process_run
 
+from database import Database
+
 DEBUG = False
 
 
@@ -36,6 +40,11 @@ class main_Window(NodeEditorWindow):
         super().__init__(parent)
 
     def initUI(self):
+        # client = MongoClient('localhost', 27017)
+        # db = client.ProcessBud
+        # self.projectDt = db.Projects
+        # self.variableDt = db.Variables
+
         self.showMaximized()
         self.propertiesPanel = PropertiesPanel
         self.stylesheet_filename = os.path.join(os.path.dirname(__file__), "qss/node_editor.qss")
@@ -57,13 +66,22 @@ class main_Window(NodeEditorWindow):
         self.mdiArea.setTabsClosable(True)
         self.mdiArea.setTabsMovable(True)
         self.setCentralWidget(self.mdiArea)
+        self.add = QPushButton()
+        self.add.setText("+")
+        self.add.clicked.connect(self.addtoVariable)
 
         self.mdiArea.subWindowActivated.connect(self.updateMenus)
         self.windowMapper = QSignalMapper(self)
         self.windowMapper.mapped[QWidget].connect(self.setActiveSubWindow)
 
         self.createNodesDock()
+        self.variableDtDock()
         self.outputDock()
+        # active = self.getCurrentNodeEditorWidget()
+        # if active:
+        #     self.variableDtDock()
+        #     self.outputDock()
+
         self.createActions()
         self.createMenus()
         self.createToolBars()
@@ -159,6 +177,46 @@ class main_Window(NodeEditorWindow):
                         nodeeditor = ProcessSubWindow()
                         if nodeeditor.fileLoad(fname):
 
+                            pr_data = Database.find('Projects', {"name": fname})
+                            self.variableTable.setRowCount(0)
+                            if pr_data.count() > 0:
+
+                                for item in pr_data:
+                                    pr_id = item.get('_id')
+                                result = Database.find('Variables', {"Pr_id": pr_id})
+                                print(result)
+                                for dt in result:
+                                    # print(dt['Type'])
+                                    Name = dt['Name']
+                                    Value = dt['Default value']
+                                    name = QTableWidgetItem(Name)
+                                    value = QTableWidgetItem(Value)
+
+                                    # name = QLineEdit()
+                                    # name.setText(dt['Name'])
+                                    # value=QLineEdit()
+                                    # value.setText(dt['Default value'])
+                                    rowPosition = self.variableTable.rowCount()
+                                    self.variableTable.insertRow(rowPosition)
+                                    self.variableTable.setItem(rowPosition, 0, name)
+                                    self.variableTable.setItem(rowPosition, 2, value)
+
+                                    # self.variableTable.setCellWidget(rowPosition, 0, name)
+                                    # self.variableTable.setCellWidget(rowPosition, 2, value)
+                                    combo = QComboBox(self)
+                                    combo.addItem("String")
+                                    combo.addItem("List")
+
+                                    combo.setCurrentText(dt['Type'])
+                                    self.variableTable.setCellWidget(rowPosition, 1, combo)
+                                    self.delrow = QPushButton("Delete", self)
+                                    self.delrow.clicked.connect(self.deleteClicked)
+                                    self.variableTable.setCellWidget(rowPosition, 3, self.delrow)
+
+                                    # self.variableTable.setCellWidget(rowPosition, 1, self.type)
+                                    # self.variableTable.setCellWidget(rowPosition, 3, self.delrow)
+                                    # print(result['Type'])
+
                             nodeeditor.scene.data_changed = 0
 
                             self.statusBar().showMessage("File %s loaded" % fname, 5000)
@@ -181,7 +239,7 @@ class main_Window(NodeEditorWindow):
         print("Run")
         current_nodeeditor = self.getCurrentNodeEditorWidget()
         current_nodeeditor.save_temp()
-        process_run.runProcess.execute_process(self)
+        process_run.runProcess.execute_process(self, self.variableTable)
         runner = Runner(self.outputWidget)
         self.threadpool.start(runner)
 
@@ -190,8 +248,8 @@ class main_Window(NodeEditorWindow):
 
         self.createFileMenu()
         self.createEditMenu()
-        self.createUndoMenu()
-        self.createRedoMenu()
+        # self.createUndoMenu()
+        # self.createRedoMenu()
         self.createRunMenu()
         self.createStopMenu()
 
@@ -220,8 +278,8 @@ class main_Window(NodeEditorWindow):
     def createEditMenu(self):
         menubar = self.menuBar()
         self.editMenu = menubar.addMenu('&Edit')
-        # self.editMenu.addAction(self.actUndo)
-        # self.editMenu.addAction(self.actRedo)
+        self.editMenu.addAction(self.actUndo)
+        self.editMenu.addAction(self.actRedo)
         self.editMenu.addSeparator()
         self.editMenu.addAction(self.actCut)
         self.editMenu.addAction(self.actCopy)
@@ -233,13 +291,13 @@ class main_Window(NodeEditorWindow):
         menubar = self.menuBar()
         menubar.addAction(self.actRun)
 
-    def createUndoMenu(self):
-        menubar = self.menuBar()
-        menubar.addAction(self.actUndo)
-
-    def createRedoMenu(self):
-        menubar = self.menuBar()
-        menubar.addAction(self.actRedo)
+    # def createUndoMenu(self):
+    #     menubar = self.menuBar()
+    #     menubar.addAction(self.actUndo)
+    #
+    # def createRedoMenu(self):
+    #     menubar = self.menuBar()
+    #     menubar.addAction(self.actRedo)
 
     def createStopMenu(self):
         menubar = self.menuBar()
@@ -263,8 +321,11 @@ class main_Window(NodeEditorWindow):
                 print("untitled json")
                 return self.onFileSaveAs()
 
-            current_nodeeditor.fileSave()
+            current_nodeeditor.fileSave(current_nodeeditor.filename, self.variableTable)
             self.statusBar().showMessage("Successfully saved %s" % current_nodeeditor.filename, 5000)
+            # pr_name = {"name": current_nodeeditor.filename}
+            # prid = self.projectDt.insert_one(pr_name)
+            # print("Project Id ", prid.inserted_id)
 
             # support for MDI app
             if hasattr(current_nodeeditor, "setTitle"):
@@ -282,8 +343,12 @@ class main_Window(NodeEditorWindow):
             if fname == '': return False
 
             self.onBeforeSaveAs(current_nodeeditor, fname)
-            current_nodeeditor.fileSave(fname)
+            current_nodeeditor.fileSave(fname, self.variableTable)
             self.statusBar().showMessage("Successfully saved as %s" % current_nodeeditor.filename, 5000)
+
+            # pr_name = {"name": current_nodeeditor.filename}
+            # prid = self.projectDt.insert_one(pr_name)
+            # print(prid.inserted_id)
 
             # support for MDI app
             if hasattr(current_nodeeditor, "setTitle"):
@@ -354,6 +419,8 @@ class main_Window(NodeEditorWindow):
         self.actPrevious.setEnabled(hasMdiChild)
         self.actSeparator.setVisible(hasMdiChild)
 
+        self.add.setEnabled(hasMdiChild)
+
         self.updateEditMenu()
 
     def updateEditMenu(self):
@@ -381,7 +448,10 @@ class main_Window(NodeEditorWindow):
         featurecheck.triggered.connect(self.onWindowNodesToolbar)
         outcheck = self.windowMenu.addAction("output Panel")
         outcheck.setCheckable(True)
-        outcheck.triggered.connect(self.onWindowOutput)
+        outcheck.triggered.connect(self.onWindowOutputPanel)
+        variablecheck = self.windowMenu.addAction("Variable Panel")
+        variablecheck.setCheckable(True)
+        variablecheck.triggered.connect(self.onWindowVariablePanel)
         # toolbar_nodes.setChecked(self.nodesDock.isVisible())
 
         self.windowMenu.addSeparator()
@@ -419,12 +489,19 @@ class main_Window(NodeEditorWindow):
         else:
             self.nodesDock.show()
 
-    def onWindowOutput(self):
+    def onWindowOutputPanel(self):
 
         if self.outDock.isVisible():
             self.outDock.hide()
         else:
             self.outDock.show()
+
+    def onWindowVariablePanel(self):
+
+        if self.variableDock.isVisible():
+            self.variableDock.hide()
+        else:
+            self.variableDock.show()
 
     def createToolBars(self):
         pass
@@ -440,13 +517,87 @@ class main_Window(NodeEditorWindow):
         self.addDockWidget(Qt.LeftDockWidgetArea, self.nodesDock)
 
     def outputDock(self):
-
         self.outputWidget = QListWidget()
+
         self.outDock = QDockWidget("Output Panel")
         self.outDock.setWidget(self.outputWidget)
-        self.outDock.setFloating(True)
+        self.outDock.setFloating(False)
+        self.outDock.widget().setMinimumSize(QSize(500, 150))
 
         self.addDockWidget(Qt.BottomDockWidgetArea, self.outDock)
+
+        # self.outWidget = QWidget(self)
+        # # creating a vertical box layout
+        # self.outputLayout = QVBoxLayout(self)
+        #
+        # self.outputWidget = QListWidget()
+        # self.text=QLabel()
+        # self.text.setText("test")
+        # self.outputLayout.addWidget(self.text)
+        # self.outputLayout.stretch(1)
+        # self.outputLayout.addWidget(self.outputWidget)
+        # self.outWidget.setLayout(self.outputLayout)
+        #
+        #
+        #
+        # self.outDock = QDockWidget("Output Panel")
+        # self.outDock.setWidget(self.outWidget)
+        # self.outDock.setFloating(True)
+        # # self.outDock.widget().setMinimumSize(QSize(500, 150))
+        #
+        # self.addDockWidget(Qt.BottomDockWidgetArea, self.outDock)
+
+        # @pyqtSlot(str)
+
+    def variableDtDock(self):
+        current_nodeeditor = self.getCurrentNodeEditorWidget()
+        # if current_nodeeditor==nodeeditor:
+
+        print("Variable List")
+        self.variableWidget = QWidget(self)
+        # creating a vertical box layout
+        self.variableLayout = QVBoxLayout(self)
+        # self.add = QPushButton("+", self)
+        self.variableTable = QTableWidget()
+
+        # adding these buttons to the layout
+        self.variableLayout.addWidget(self.add)
+        self.variableLayout.addWidget(self.variableTable)
+        # setting the layout to the widget
+        self.variableWidget.setLayout(self.variableLayout)
+        self.variableTable.setColumnCount(4)
+        self.variableTable.setHorizontalHeaderItem(0, QTableWidgetItem("Name"))
+        self.variableTable.setHorizontalHeaderItem(1, QTableWidgetItem("Type"))
+        self.variableTable.setHorizontalHeaderItem(2, QTableWidgetItem("Value"))
+        self.variableTable.setHorizontalHeaderItem(3, QTableWidgetItem("Action"))
+        self.variableTable.horizontalHeader().setSectionResizeMode(0, QHeaderView.Stretch)
+        self.variableTable.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
+        self.variableTable.horizontalHeader().setSectionResizeMode(2, QHeaderView.Stretch)
+        self.variableDock = QDockWidget("Variable Panel")
+        self.variableDock.setWidget(self.variableWidget)
+        # self.variableDock.setFloating(True)
+
+        self.addDockWidget(Qt.BottomDockWidgetArea, self.variableDock)
+
+    def addtoVariable(self):
+        self.delrow = QPushButton("Delete", self)
+        self.delrow.clicked.connect(self.deleteClicked)
+        self.type = QComboBox(self)
+        self.type.addItem("String")
+        self.type.addItem("List")
+
+        rowPosition = self.variableTable.rowCount()
+        self.variableTable.insertRow(rowPosition)
+        self.variableTable.setCellWidget(rowPosition, 1, self.type)
+        self.variableTable.setCellWidget(rowPosition, 3, self.delrow)
+        # self.variableTable.setItem(rowPosition, 2, QTableWidgetItem(self.delrow))
+
+    @pyqtSlot()
+    def deleteClicked(self):
+        button = self.sender()
+        if button:
+            row = self.variableTable.indexAt(button.pos()).row()
+            self.variableTable.removeRow(row)
 
     @pyqtSlot(str)
     def addToOutput(self, line):
@@ -456,28 +607,34 @@ class main_Window(NodeEditorWindow):
     def propertiesDock(self, value, objval):
         print("parameter" + value)
         current_nodeeditor = self.getCurrentNodeEditorWidget()
-        self.propertiesPanel.propertytab(self, value, objval, current_nodeeditor)
+        self.propertiesPanel.propertytab(self, value, objval, current_nodeeditor, self.variableTable)
 
     def createStatusBar(self):
         self.statusBar().showMessage("Ready")
 
     def createMdiChild(self, child_widget=None):
+        self.variableDock.show()
 
         nodeeditor = child_widget if child_widget is not None else ProcessSubWindow()
 
         subwnd = self.mdiArea.addSubWindow(nodeeditor)
 
         subwnd.setWindowIcon(self.empty_icon)
+        # subwnd.setWidget(self.variableWidget)
         nodeeditor.view.itemsel.connect(self.propertiesDock)
+        # nodeeditor.view.scenewindow.connect(self.variableDtDock)
         nodeeditor.scene.history.addHistoryModifiedListener(self.updateEditMenu)
         nodeeditor.addCloseEventListener(self.onSubWndClose)
 
         nodeeditor.scene.data_changed = 0
+        # self.variableDtDock(nodeeditor)
         return subwnd
 
     def onSubWndClose(self, widget, event):
         existing = self.findMdiChild(widget.filename)
         self.mdiArea.setActiveSubWindow(existing)
+
+        self.variableDock.hide()
 
         if self.maybeSave():
             event.accept()
@@ -537,7 +694,12 @@ class Runner(QRunnable):
 
             output = proc.communicate()[0]
             output = output.decode('UTF-8')
+            output = output.split('\n')
+            # print(output)
 
-            self.outputWidget.addItem(output)
+            for dt in output:
+                self.outputWidget.addItem(dt)
+
+            # self.outputWidget.addItem(output)
 
         time.sleep(1)

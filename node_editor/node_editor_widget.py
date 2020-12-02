@@ -19,7 +19,8 @@ class NodeEditorWidget(QWidget):
     GraphicsView_class = QDMGraphicsView
 
     """The ``NodeEditorWidget`` class"""
-    def __init__(self, parent:QWidget=None):
+
+    def __init__(self, parent: QWidget = None):
         """
         :param parent: parent widget
         :type parent: ``QWidget``
@@ -34,7 +35,6 @@ class NodeEditorWidget(QWidget):
 
         self.initUI()
 
-
     def initUI(self):
         """Set up this ``NodeEditorWidget`` with its layout,  :class:`~node_editor.node_scene.Scene` and
         :class:`~node_editor.node_graphics_view.QDMGraphicsView`"""
@@ -48,7 +48,6 @@ class NodeEditorWidget(QWidget):
         # create graphics view
         self.view = self.__class__.GraphicsView_class(self.scene.grScene, self)
         self.layout.addWidget(self.view)
-
 
     def isModified(self) -> bool:
         """Has the `Scene` been modified?
@@ -114,7 +113,7 @@ class NodeEditorWidget(QWidget):
         self.scene.history.clear()
         self.scene.history.storeInitialHistoryStamp()
 
-    def fileLoad(self, filename:str):
+    def fileLoad(self, filename: str):
         """Load serialized graph from JSON file
 
         :param filename: file to load
@@ -129,7 +128,7 @@ class NodeEditorWidget(QWidget):
             return True
         except FileNotFoundError as e:
             dumpException(e)
-            QMessageBox.warning(self, "Error loading %s" % os.path.basename(filename), str(e).replace('[Errno 2]',''))
+            QMessageBox.warning(self, "Error loading %s" % os.path.basename(filename), str(e).replace('[Errno 2]', ''))
             return False
         except InvalidFile as e:
             dumpException(e)
@@ -139,35 +138,32 @@ class NodeEditorWidget(QWidget):
         finally:
             QApplication.restoreOverrideCursor()
 
-
     def save_temp(self):
         # self.filename=os.path.join("process/process_gui", "Untitled_Project.json")
         self.scene.saveToRun()
         # QApplication.restoreOverrideCursor()
         return True
 
-
-
-    def fileSave(self, filename:str=None):
+    def fileSave(self, filename: str = None,tbl: QTableWidget=None):
         """Save serialized graph to JSON file. When called with empty parameter, we won't store/remember the filename
 
         :param filename: file to store the graph
         :type filename: ``str``
         """
-        print("name is")
-        print(filename)
+
+        print("filnme is", filename)
+        print(tbl)
         if filename is not None: self.filename = filename
         QApplication.setOverrideCursor(Qt.WaitCursor)
-        self.scene.saveToFile(self.filename)
+        self.scene.saveToFile(self.filename,tbl)
         QApplication.restoreOverrideCursor()
         return True
 
-
     def addNodes(self):
         """Testing method to create 3 `Nodes` with 3 `Edges` connecting them"""
-        node1 = Node(self.scene, "My Awesome Node 1", inputs=[0,0,0], outputs=[1,5])
-        node2 = Node(self.scene, "My Awesome Node 2", inputs=[3,3,3], outputs=[1])
-        node3 = Node(self.scene, "My Awesome Node 3", inputs=[2,2,2], outputs=[1])
+        node1 = Node(self.scene, "My Awesome Node 1", inputs=[0, 0, 0], outputs=[1, 5])
+        node2 = Node(self.scene, "My Awesome Node 2", inputs=[3, 3, 3], outputs=[1])
+        node3 = Node(self.scene, "My Awesome Node 3", inputs=[2, 2, 2], outputs=[1])
         node1.setPos(-350, -250)
         node2.setPos(-75, 0)
         node3.setPos(200, -200)
@@ -175,8 +171,6 @@ class NodeEditorWidget(QWidget):
         edge1 = Edge(self.scene, node1.outputs[0], node2.inputs[0], edge_type=EDGE_TYPE_BEZIER)
         edge2 = Edge(self.scene, node2.outputs[0], node3.inputs[0], edge_type=EDGE_TYPE_BEZIER)
         edge3 = Edge(self.scene, node1.outputs[0], node3.inputs[2], edge_type=EDGE_TYPE_BEZIER)
-        print(node1)
-        print('HAI')
 
         self.scene.history.storeInitialHistoryStamp()
 
@@ -213,20 +207,16 @@ class NodeEditorWidget(QWidget):
         text.setFlag(QGraphicsItem.ItemIsMovable)
         text.setDefaultTextColor(QColor.fromRgbF(1.0, 1.0, 1.0))
 
-
         widget1 = QPushButton("Hello World")
         proxy1 = self.grScene.addWidget(widget1)
         proxy1.setFlag(QGraphicsItem.ItemIsMovable)
         proxy1.setPos(0, 30)
-
 
         widget2 = QTextEdit()
         proxy2 = self.grScene.addWidget(widget2)
         proxy2.setFlag(QGraphicsItem.ItemIsSelectable)
         proxy2.setPos(0, 60)
 
-
         line = self.grScene.addLine(-200, -200, 400, -100, outlinePen)
         line.setFlag(QGraphicsItem.ItemIsMovable)
         line.setFlag(QGraphicsItem.ItemIsSelectable)
-

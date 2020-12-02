@@ -1,0 +1,5 @@
+2020/11/17-14:04:20.047 1ebc Reusing MANIFEST C:\Users\DELL\PycharmProjects\ProcessBudDevBranch\resource\chrome\tagui_user_profile\Default\IndexedDB\https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/11/17-14:04:23.142 2c40 Level-0 table #5: started
+2020/11/17-14:04:23.265 2c40 Level-0 table #5: 382 bytes OK
+2020/11/17-14:04:23.357 2c40 Delete type=0 #3
+2020/11/17-14:04:23.358 2c40 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

@@ -24,10 +24,10 @@ class clickWindow(QtWidgets.QMainWindow):
 
         super(clickWindow, self).__init__()
 
-        self.setSizePolicy(
-            QtWidgets.QSizePolicy.MinimumExpanding,
-            QtWidgets.QSizePolicy.MinimumExpanding
-        )
+        # self.setSizePolicy(
+        #     QtWidgets.QSizePolicy.MinimumExpanding,
+        #     QtWidgets.QSizePolicy.MinimumExpanding
+        # )
 
         if df is None:
             self.keyEvents = pd.DataFrame(columns=['Type', 'Button', 'Coordinates'])
@@ -103,7 +103,7 @@ class clickWindow(QtWidgets.QMainWindow):
         self.apply_Button.clicked.connect(self.writeScript)
 
         self.ok_browse_Button.clicked.connect(self.getfiles)
-        self.scene = Scene()
+        # self.scene = Scene()
         # self.show()
 
     def onChange(self):

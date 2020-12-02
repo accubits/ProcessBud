@@ -1,1 +1,7 @@
-Wait
+datalist=["1", "5"]
+Wait 3
+len=datalist.length
+for (i=0; i <len;i++)
+{
+Wait '+datalist[i]+'
+}

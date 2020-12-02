@@ -9,6 +9,9 @@ OP_Node_OPEN_SESSION = 6
 OP_Node_FETCH_EMAIL = 7
 OP_Node_CLOSE_SESSION = 8
 OP_Node_SEND_EMAIL = 9
+OP_Node_Loopstart=10
+OP_Node_Loopend=11
+
 
 CALC_NODES = {
 }

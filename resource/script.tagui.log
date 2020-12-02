@@ -1,7 +1,9 @@
 
-START - automation started - Mon Nov 09 2020 11:37:50 GMT+0530 (India Standard Time)
+START - automation started - Wed Dec 02 2020 17:45:04 GMT+0530 (India Standard Time)
 
-Wait
+Wait 3
+Wait 1
+Wait 5
 
-FINISH - automation finished - 5.1s
+FINISH - automation finished - 9.4s
 

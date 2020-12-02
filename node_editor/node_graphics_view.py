@@ -38,6 +38,8 @@ class QDMGraphicsView(QGraphicsView):
     #: pyqtSignal emitted when cursor position on the `Scene` has changed
     scenePosChanged = pyqtSignal(int, int)
 
+    # scenewindow=pyqtSignal(str)
+
     def __init__(self, grScene: 'QDMGraphicsScene', parent: 'QWidget' = None):
         """
         :param grScene: reference to the :class:`~node_editor.node_graphics_scene.QDMGraphicsScene`
@@ -84,6 +86,8 @@ class QDMGraphicsView(QGraphicsView):
         # listeners
         self._drag_enter_listeners = []
         self._drop_listeners = []
+
+
 
         # self.QDMGraphicsView= QDMGraphicsView
 
@@ -257,6 +261,7 @@ class QDMGraphicsView(QGraphicsView):
         """When Left  mouse button was released"""
 
         # get item which we release mouse button on
+        # self.scenewindow.emit("test")
         item = self.getItemAtClick(event)
         print(len(self.grScene.selectedItems()))
         if len(self.grScene.selectedItems()) < 2:

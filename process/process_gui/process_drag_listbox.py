@@ -16,24 +16,32 @@ class QDMDragListbox(QListWidget):
         self.setIconSize(QSize(32, 32))
         self.setSelectionMode(QAbstractItemView.SingleSelection)
         self.setDragEnabled(True)
-        self.baseval=0
-        self.emailval=0
+        self.baseval = 0
+        self.emailval = 0
+        self.loopval = 0
         self.basic_controls = QPushButton("Basic Controls >>")
         self.basic_controls.setStyleSheet("background-color: #F9EBEA")
         self.basic_controls.clicked.connect(lambda: self.toggleItem("basiccontrols"))
-        self.email_controls=QPushButton("Email Controls >>")
+        self.email_controls = QPushButton("Email Controls >>")
         self.email_controls.clicked.connect(lambda: self.toggleItem("emailcontrols"))
         self.email_controls.setStyleSheet("background-color: #F9EBEA")
+
+        self.loop_controls = QPushButton("Loop Controls >>")
+        self.loop_controls.clicked.connect(lambda: self.toggleItem("loopcontrols"))
+        self.loop_controls.setStyleSheet("background-color: #F9EBEA")
 
         self.addMyItems()
         for dt in self.email_control_list:
             dt.setHidden(True)
         for dt in self.basic_control_list:
             dt.setHidden(True)
+        for dt in self.loop_control_list:
+            dt.setHidden(True)
 
     def addMyItems(self):
-        self.basic_control_list=[]
-        self.email_control_list=[]
+        self.basic_control_list = []
+        self.email_control_list = []
+        self.loop_control_list = []
         keys = list(CALC_NODES.keys())
         print(keys)
         keys.sort()
@@ -48,7 +56,7 @@ class QDMDragListbox(QListWidget):
                 headName = "Basic Controls >>"
                 listitem = QListWidgetItem(headName)
                 QListWidget.addItem(self, listitem)
-                QListWidget.setItemWidget(self, listitem,self.basic_controls)
+                QListWidget.setItemWidget(self, listitem, self.basic_controls)
                 QListWidget.addItem(self, listitem)
                 listitem.setSizeHint(QSize(32, 32))
 
@@ -60,17 +68,24 @@ class QDMDragListbox(QListWidget):
                 QListWidget.addItem(self, listitem)
                 listitem.setSizeHint(QSize(32, 32))
 
+            elif cnt == 9:
+                headName = "Loop Controls"
+                listitem = QListWidgetItem(headName)
+                QListWidget.addItem(self, listitem)
+                QListWidget.setItemWidget(self, listitem, self.loop_controls)
+                QListWidget.addItem(self, listitem)
+                listitem.setSizeHint(QSize(32, 32))
+
             node = get_class_from_opcode(key)
             self.addMyItem(node.op_title, node.icon, node.op_code)
             cnt = cnt + 1
 
-
     def toggleItem(self, feature):
 
-        if feature=="basiccontrols":
+        if feature == "basiccontrols":
 
             print(self.basic_control_list)
-            if self.baseval==1:
+            if self.baseval == 1:
                 for dt in self.basic_control_list:
                     dt.setHidden(True)
                 self.baseval = 0
@@ -79,7 +94,7 @@ class QDMDragListbox(QListWidget):
                     dt.setHidden(False)
                 self.baseval = 1
 
-        elif feature=="emailcontrols":
+        elif feature == "emailcontrols":
             if self.emailval == 1:
                 for dt in self.email_control_list:
                     dt.setHidden(True)
@@ -89,13 +104,20 @@ class QDMDragListbox(QListWidget):
                     dt.setHidden(False)
                 self.emailval = 1
 
+        elif feature == "loopcontrols":
+            if self.loopval == 1:
+                for dt in self.loop_control_list:
+                    dt.setHidden(True)
+                self.loopval = 0
+            else:
+                for dt in self.loop_control_list:
+                    dt.setHidden(False)
+                self.loopval = 1
 
     def addMyItem(self, name, icon=None, op_code=0):
 
         print(QListWidget)
         print(dir(QListWidget))
-
-
 
         item = QListWidgetItem(name, self)  # can be (icon, text, parent, <int>type)
         if op_code < 6:
@@ -105,6 +127,8 @@ class QDMDragListbox(QListWidget):
             print(self.basic_control_list)
         elif 5 < op_code < 10:
             self.email_control_list.append(item)
+        elif 9 < op_code < 12:
+            self.loop_control_list.append(item)
         pixmap = QPixmap(icon if icon is not None else ".")
         print("item is")
         print(item)

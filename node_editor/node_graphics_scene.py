@@ -32,6 +32,7 @@ class QDMGraphicsScene(QGraphicsScene):
 
         self.initAssets()
         self.setBackgroundBrush(self._color_background)
+        # self.variableDtDock()
 
     def initAssets(self):
         """Initialize ``QObjects`` like ``QColor``, ``QPen`` and ``QBrush``"""
@@ -91,3 +92,32 @@ class QDMGraphicsScene(QGraphicsScene):
 
         painter.setPen(self._pen_dark)
         painter.drawLines(*lines_dark)
+    #
+    # def variableDtDock(self):
+    #     # current_nodeeditor = self.getCurrentNodeEditorWidget()
+    #     # if current_nodeeditor==nodeeditor:
+    #
+    #     print("Variable List")
+    #     variableWidget = QWidget()
+    #     # creating a vertical box layout
+    #     variableLayout = QVBoxLayout()
+    #     # self.add = QPushButton("+", self)
+    #     self.variableTable = QTableWidget()
+    #
+    #     # adding these buttons to the layout
+    #     # variableLayout.addWidget(self.add)
+    #     variableLayout.addWidget(self.variableTable)
+    #     # setting the layout to the widget
+    #     variableWidget.setLayout(variableLayout)
+    #     self.variableTable.setColumnCount(3)
+    #     self.variableTable.setHorizontalHeaderItem(0, QTableWidgetItem("Name"))
+    #     self.variableTable.setHorizontalHeaderItem(1, QTableWidgetItem("Type"))
+    #     self.variableTable.setHorizontalHeaderItem(2, QTableWidgetItem("Action"))
+    #     self.variableTable.horizontalHeader().setSectionResizeMode(0, QHeaderView.Stretch)
+    #     self.variableTable.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
+    #     self.variableTable.horizontalHeader().setSectionResizeMode(2, QHeaderView.Stretch)
+    #     self.variableDock = QDockWidget("Variable Panel")
+    #     self.variableDock.setWidget(variableWidget)
+    #     self.variableDock.setFloating(True)
+    #
+    #     self.addDockWidget(Qt.BottomDockWidgetArea, self.variableDock)
