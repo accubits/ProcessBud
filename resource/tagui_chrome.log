@@ -1,0 +1,178 @@
+[tagui] START  - listening for inputs
+
+[tagui] INPUT  - 
+[1] {"id":1,"method":"Page.setDownloadBehavior","params":{"behavior":"allow","downloadPath":"C:\\Users\\DELL\\PycharmProjects\\ProcessBudDevBranch\\resource"}}
+[tagui] OUTPUT - 
+[1] {"id":1,"result":{}}
+
+[tagui] INPUT  - 
+[2] {"id":2,"method":"Page.navigate","params":{"url":"https://randomkeygen.com/"}}
+[tagui] OUTPUT - 
+[2] {"id":2,"result":{"frameId":"4A3015F0EA25D4F3611E6F34B4E24B03","loaderId":"469BA4A0E7C73E950B3A49575300FF85"}}
+
+[tagui] INPUT  - 
+[3] {"id":3,"method":"Runtime.evaluate","params":{"expression":"document.title"}}
+[tagui] OUTPUT - 
+[3] {"id":3,"result":{"result":{"type":"string","value":"RandomKeygen - The Secure Password & Keygen Generator"}}}
+
+[tagui] INPUT  - 
+[4] {"id":4,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[2]/section/div[1]/a/span[1]',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[4] {"id":4,"result":{"result":{"type":"number","value":1,"description":"1"}}}
+
+[tagui] INPUT  - 
+[5] {"id":5,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[2]/section/div[1]/a/span[1]',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotItem(0).scrollIntoViewIfNeeded()"}}
+[tagui] OUTPUT - 
+[5] {"id":5,"result":{"result":{"type":"undefined"}}}
+
+[tagui] INPUT  - 
+[6] {"id":6,"method":"Runtime.evaluate","params":{"expression":"var result_bounds = document.evaluate('/html/body/div[2]/section/div[1]/a/span[1]',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotItem(0).getBoundingClientRect(); var result_xy = {x: Math.round(result_bounds.left + result_bounds.width / 2), y: Math.round(result_bounds.top + result_bounds.height / 2)}; result_xy","returnByValue":true}}
+[tagui] OUTPUT - 
+[6] {"id":6,"result":{"result":{"type":"object","value":{"x":636,"y":155}}}}
+
+[tagui] INPUT  - 
+[7] {"id":7,"method":"Input.dispatchMouseEvent","params":{"type":"mouseMoved","x":636,"y":155,"button":"none","clickCount":0}}
+[tagui] OUTPUT - 
+[7] {"id":7,"result":{}}
+
+[tagui] INPUT  - 
+[8] {"id":8,"method":"Input.dispatchMouseEvent","params":{"type":"mousePressed","x":636,"y":155,"button":"left","clickCount":1}}
+[tagui] OUTPUT - 
+[8] {"id":8,"result":{}}
+
+[tagui] INPUT  - 
+[9] {"id":9,"method":"Input.dispatchMouseEvent","params":{"type":"mouseReleased","x":636,"y":155,"button":"left","clickCount":1}}
+[tagui] OUTPUT - 
+[9] {"id":9,"result":{}}
+
+[tagui] INPUT  - 
+[10] {"id":10,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[2]/section/div[1]/a/span[1]',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[10] {"id":10,"result":{"result":{"type":"number","value":1,"description":"1"}}}
+
+[tagui] INPUT  - 
+[11] {"id":11,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[2]/section/div[1]/a/span[1]',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotItem(0).scrollIntoViewIfNeeded()"}}
+[tagui] OUTPUT - 
+[11] {"id":11,"result":{"result":{"type":"undefined"}}}
+
+[tagui] INPUT  - 
+[12] {"id":12,"method":"Runtime.evaluate","params":{"expression":"var result_bounds = document.evaluate('/html/body/div[2]/section/div[1]/a/span[1]',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotItem(0).getBoundingClientRect(); var result_xy = {x: Math.round(result_bounds.left + result_bounds.width / 2), y: Math.round(result_bounds.top + result_bounds.height / 2)}; result_xy","returnByValue":true}}
+[tagui] OUTPUT - 
+[12] {"id":12,"result":{"result":{"type":"object","value":{"x":636,"y":245}}}}
+
+[tagui] INPUT  - 
+[13] {"id":13,"method":"Input.dispatchMouseEvent","params":{"type":"mouseMoved","x":636,"y":245,"button":"none","clickCount":0}}
+[tagui] OUTPUT - 
+[13] {"id":13,"result":{}}
+
+[tagui] INPUT  - 
+[14] {"id":14,"method":"Input.dispatchMouseEvent","params":{"type":"mousePressed","x":636,"y":245,"button":"left","clickCount":1}}
+[tagui] OUTPUT - 
+[14] {"id":14,"result":{}}
+
+[tagui] INPUT  - 
+[15] {"id":15,"method":"Input.dispatchMouseEvent","params":{"type":"mouseReleased","x":636,"y":245,"button":"left","clickCount":1}}
+[tagui] OUTPUT - 
+[15] {"id":15,"result":{}}
+
+[tagui] INPUT  - 
+[16] {"id":16,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[2]/section/div[1]/a/span[1]',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[16] {"id":16,"result":{"result":{"type":"number","value":1,"description":"1"}}}
+
+[tagui] INPUT  - 
+[17] {"id":17,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[2]/section/div[1]/a/span[1]',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotItem(0).scrollIntoViewIfNeeded()"}}
+[tagui] OUTPUT - 
+[17] {"id":17,"result":{"result":{"type":"undefined"}}}
+
+[tagui] INPUT  - 
+[18] {"id":18,"method":"Runtime.evaluate","params":{"expression":"var result_bounds = document.evaluate('/html/body/div[2]/section/div[1]/a/span[1]',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotItem(0).getBoundingClientRect(); var result_xy = {x: Math.round(result_bounds.left + result_bounds.width / 2), y: Math.round(result_bounds.top + result_bounds.height / 2)}; result_xy","returnByValue":true}}
+[tagui] OUTPUT - 
+[18] {"id":18,"result":{"result":{"type":"object","value":{"x":636,"y":245}}}}
+
+[tagui] INPUT  - 
+[19] {"id":19,"method":"Input.dispatchMouseEvent","params":{"type":"mouseMoved","x":636,"y":245,"button":"none","clickCount":0}}
+[tagui] OUTPUT - 
+[19] {"id":19,"result":{}}
+
+[tagui] INPUT  - 
+[20] {"id":20,"method":"Input.dispatchMouseEvent","params":{"type":"mousePressed","x":636,"y":245,"button":"left","clickCount":1}}
+[tagui] OUTPUT - 
+[20] {"id":20,"result":{}}
+
+[tagui] INPUT  - 
+[21] {"id":21,"method":"Input.dispatchMouseEvent","params":{"type":"mouseReleased","x":636,"y":245,"button":"left","clickCount":1}}
+[tagui] OUTPUT - 
+[21] {"id":21,"result":{}}
+
+[tagui] INPUT  - 
+[22] {"id":22,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[2]/section/div[1]/a/span[1]',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[22] {"id":22,"result":{"result":{"type":"number","value":1,"description":"1"}}}
+
+[tagui] INPUT  - 
+[23] {"id":23,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[2]/section/div[1]/a/span[1]',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotItem(0).scrollIntoViewIfNeeded()"}}
+[tagui] OUTPUT - 
+[23] {"id":23,"result":{"result":{"type":"undefined"}}}
+
+[tagui] INPUT  - 
+[24] {"id":24,"method":"Runtime.evaluate","params":{"expression":"var result_bounds = document.evaluate('/html/body/div[2]/section/div[1]/a/span[1]',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotItem(0).getBoundingClientRect(); var result_xy = {x: Math.round(result_bounds.left + result_bounds.width / 2), y: Math.round(result_bounds.top + result_bounds.height / 2)}; result_xy","returnByValue":true}}
+[tagui] OUTPUT - 
+[24] {"id":24,"result":{"result":{"type":"object","value":{"x":636,"y":245}}}}
+
+[tagui] INPUT  - 
+[25] {"id":25,"method":"Input.dispatchMouseEvent","params":{"type":"mouseMoved","x":636,"y":245,"button":"none","clickCount":0}}
+[tagui] OUTPUT - 
+[25] {"id":25,"result":{}}
+
+[tagui] INPUT  - 
+[26] {"id":26,"method":"Input.dispatchMouseEvent","params":{"type":"mousePressed","x":636,"y":245,"button":"left","clickCount":1}}
+[tagui] OUTPUT - 
+[26] {"id":26,"result":{}}
+
+[tagui] INPUT  - 
+[27] {"id":27,"method":"Input.dispatchMouseEvent","params":{"type":"mouseReleased","x":636,"y":245,"button":"left","clickCount":1}}
+[tagui] OUTPUT - 
+[27] {"id":27,"result":{}}
+
+[tagui] INPUT  - 
+[28] {"id":28,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[2]/section/div[1]/a/span[1]',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[28] {"id":28,"result":{"result":{"type":"number","value":1,"description":"1"}}}
+
+[tagui] INPUT  - 
+[29] {"id":29,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/div[2]/section/div[1]/a/span[1]',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotItem(0).scrollIntoViewIfNeeded()"}}
+[tagui] OUTPUT - 
+[29] {"id":29,"result":{"result":{"type":"undefined"}}}
+
+[tagui] INPUT  - 
+[30] {"id":30,"method":"Runtime.evaluate","params":{"expression":"var result_bounds = document.evaluate('/html/body/div[2]/section/div[1]/a/span[1]',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotItem(0).getBoundingClientRect(); var result_xy = {x: Math.round(result_bounds.left + result_bounds.width / 2), y: Math.round(result_bounds.top + result_bounds.height / 2)}; result_xy","returnByValue":true}}
+[tagui] OUTPUT - 
+[30] {"id":30,"result":{"result":{"type":"object","value":{"x":636,"y":245}}}}
+
+[tagui] INPUT  - 
+[31] {"id":31,"method":"Input.dispatchMouseEvent","params":{"type":"mouseMoved","x":636,"y":245,"button":"none","clickCount":0}}
+[tagui] OUTPUT - 
+[31] {"id":31,"result":{}}
+
+[tagui] INPUT  - 
+[32] {"id":32,"method":"Input.dispatchMouseEvent","params":{"type":"mousePressed","x":636,"y":245,"button":"left","clickCount":1}}
+[tagui] OUTPUT - 
+[32] {"id":32,"result":{}}
+
+[tagui] INPUT  - 
+[33] {"id":33,"method":"Input.dispatchMouseEvent","params":{"type":"mouseReleased","x":636,"y":245,"button":"left","clickCount":1}}
+[tagui] OUTPUT - 
+[33] {"id":33,"result":{}}
+
+[tagui] INPUT  - 
+[34] {"id":34,"method":"Runtime.evaluate","params":{"expression":"document.location.href"}}
+[tagui] OUTPUT - 
+[34] {"id":34,"result":{"result":{"type":"string","value":"https://randomkeygen.com/"}}}
+
+[tagui] INPUT  - 
+[35] {"id":35,"method":"Runtime.evaluate","params":{"expression":"document.title"}}
+[tagui] OUTPUT - 
+[35] {"id":35,"result":{"result":{"type":"string","value":"RandomKeygen - The Secure Password & Keygen Generator"}}}
+
+[tagui] FINISH - stopped listening

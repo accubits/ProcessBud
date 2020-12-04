@@ -1,3 +1,6 @@
-2020/11/17-14:03:49.083 2288 Reusing MANIFEST C:\Users\DELL\PycharmProjects\ProcessBudDevBranch\resource\chrome\tagui_user_profile\Default\Local Storage\leveldb/MANIFEST-000001
-2020/11/17-14:03:49.084 2288 Recovering log #67
-2020/11/17-14:03:49.221 2288 Reusing old log C:\Users\DELL\PycharmProjects\ProcessBudDevBranch\resource\chrome\tagui_user_profile\Default\Local Storage\leveldb/000067.log 
+2020/12/04-18:11:08.444 82c Reusing MANIFEST C:\Users\DELL\PycharmProjects\ProcessBudDevBranch\resource\chrome\tagui_user_profile\Default\Local Storage\leveldb/MANIFEST-000001
+2020/12/04-18:11:08.447 82c Recovering log #67
+2020/12/04-18:11:08.448 82c Reusing old log C:\Users\DELL\PycharmProjects\ProcessBudDevBranch\resource\chrome\tagui_user_profile\Default\Local Storage\leveldb/000067.log 
+2020/12/04-18:11:25.094 1ff8 Level-0 table #70: started
+2020/12/04-18:11:25.123 1ff8 Level-0 table #70: 38617 bytes OK
+2020/12/04-18:11:25.239 1ff8 Delete type=0 #67

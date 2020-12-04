@@ -1,7 +1,6 @@
-datalist=["1", "5"]
-Wait 3
-len=datalist.length
-for (i=0; i <len;i++)
+https://randomkeygen.com/
+for (i=0;i<5;i++)
 {
-Wait '+datalist[i]+'
+Wait 2
+Click /html/body/div[2]/section/div[1]/a/span[1]
 }

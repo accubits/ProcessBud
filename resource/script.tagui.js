@@ -53,7 +53,7 @@ var infinity = 1024;
 var quiet_mode = false; var save_text_count = 0; var snap_image_count = 0;
 
 // counters for tracking messages in r, python, sikuli, chrome integrations
-var r_count = 0; var py_count = 0; var sikuli_count = 0; var chrome_id = 0;
+var r_count = 0; var py_count = 0; var sikuli_count = 0; var chrome_id = 1;
 
 // chrome context for frame handling and targetid for popup handling
 var chrome_context = 'document'; var chrome_targetid = '';
@@ -119,12 +119,12 @@ snap_image_count++; return (flow_path + ds + 'snap' + snap_image_count.toString(
 function save_table(file_name,selector) {var ds; if (flow_path.indexOf('/') !== -1) ds = '/'; else ds = '\\';
 if (!file_name) {save_text_count++; file_name = flow_path + ds + 'table' + save_text_count.toString() + '.csv';}
 var row_data = ""; var table_cell = ""; var fs = require('fs'); fs.write(file_name, '', 'w'); // always reset file
-if (!casper.exists(selector) || (selector.toString().indexOf('xpath selector: ')==-1)) return false; // exit if invalid
+if (!chrome.exists(selector) || (selector.toString().indexOf('xpath selector: ')==-1)) return false; // exit if invalid
 if (selector.toString().length == 16) selector = ''; else selector = selector.toString().substring(16); // get xpath
 for (table_row=1; table_row<=1024; table_row++) {row_data = ""; for (table_col=1; table_col<=1024; table_col++) {
 table_cell = '(((' + selector + '//tr)[' + table_row + ']//th)' + '|'; // build cell xpath selector to include
 table_cell += '((' + selector + '//tr)[' + table_row + ']//td))[' + table_col + ']'; // both td and td elements
-if (casper.exists(xps666(table_cell))) row_data = row_data + '","' + casper.fetchText(xps666(table_cell)).trim();
+if (chrome.exists(xps666(table_cell))) row_data = row_data + '","' + chrome.fetchText(xps666(table_cell)).trim();
 else break;} // if searching for table cells (th and td) is not successful,  means end of row is reached
 if (row_data.substr(0,2) == '",') {row_data = row_data.substr(2); row_data += '"'; append_text(file_name,row_data);}
 else return true;}} // if '",' is not found, means end of table is reached as there is no cell found in row
@@ -207,43 +207,43 @@ if ((selector.indexOf('/') == 0) || (selector.indexOf('(') == 0)) return true; r
 
 // for finding best match for given locator
 function tx(locator) {if (is_xpath_selector(locator)) return xps666(locator);
-if (casper.exists(locator)) return locator; // check for css locator
+if (chrome.exists(locator)) return locator; // check for css locator
 // first check for exact match then check for containing string
-if (casper.exists(xps666('//*[@id="'+locator+'"]'))) return xps666('//*[@id="'+locator+'"]');
-if (casper.exists(xps666('//*[contains(@id,"'+locator+'")]'))) return xps666('//*[contains(@id,"'+locator+'")]');
-if (casper.exists(xps666('//*[@name="'+locator+'"]'))) return xps666('//*[@name="'+locator+'"]');
-if (casper.exists(xps666('//*[contains(@name,"'+locator+'")]'))) return xps666('//*[contains(@name,"'+locator+'")]');
-if (casper.exists(xps666('//*[@class="'+locator+'"]'))) return xps666('//*[@class="'+locator+'"]');
-if (casper.exists(xps666('//*[contains(@class,"'+locator+'")]'))) return xps666('//*[contains(@class,"'+locator+'")]');
-if (casper.exists(xps666('//*[@title="'+locator+'"]'))) return xps666('//*[@title="'+locator+'"]');
-if (casper.exists(xps666('//*[contains(@title,"'+locator+'")]'))) return xps666('//*[contains(@title,"'+locator+'")]');
-if (casper.exists(xps666('//*[@aria-label="'+locator+'"]'))) return xps666('//*[@aria-label="'+locator+'"]');
-if (casper.exists(xps666('//*[contains(@aria-label,"'+locator+'")]'))) return xps666('//*[contains(@aria-label,"'+locator+'")]');
-if (casper.exists(xps666('//*[text()="'+locator+'"]'))) return xps666('//*[text()="'+locator+'"]');
-if (casper.exists(xps666('//*[contains(text(),"'+locator+'")]'))) return xps666('//*[contains(text(),"'+locator+'")]');
-if (casper.exists(xps666('//*[@href="'+locator+'"]'))) return xps666('//*[@href="'+locator+'"]');
-if (casper.exists(xps666('//*[contains(@href,"'+locator+'")]'))) return xps666('//*[contains(@href,"'+locator+'")]');
+if (chrome.exists(xps666('//*[@id="'+locator+'"]'))) return xps666('//*[@id="'+locator+'"]');
+if (chrome.exists(xps666('//*[contains(@id,"'+locator+'")]'))) return xps666('//*[contains(@id,"'+locator+'")]');
+if (chrome.exists(xps666('//*[@name="'+locator+'"]'))) return xps666('//*[@name="'+locator+'"]');
+if (chrome.exists(xps666('//*[contains(@name,"'+locator+'")]'))) return xps666('//*[contains(@name,"'+locator+'")]');
+if (chrome.exists(xps666('//*[@class="'+locator+'"]'))) return xps666('//*[@class="'+locator+'"]');
+if (chrome.exists(xps666('//*[contains(@class,"'+locator+'")]'))) return xps666('//*[contains(@class,"'+locator+'")]');
+if (chrome.exists(xps666('//*[@title="'+locator+'"]'))) return xps666('//*[@title="'+locator+'"]');
+if (chrome.exists(xps666('//*[contains(@title,"'+locator+'")]'))) return xps666('//*[contains(@title,"'+locator+'")]');
+if (chrome.exists(xps666('//*[@aria-label="'+locator+'"]'))) return xps666('//*[@aria-label="'+locator+'"]');
+if (chrome.exists(xps666('//*[contains(@aria-label,"'+locator+'")]'))) return xps666('//*[contains(@aria-label,"'+locator+'")]');
+if (chrome.exists(xps666('//*[text()="'+locator+'"]'))) return xps666('//*[text()="'+locator+'"]');
+if (chrome.exists(xps666('//*[contains(text(),"'+locator+'")]'))) return xps666('//*[contains(text(),"'+locator+'")]');
+if (chrome.exists(xps666('//*[@href="'+locator+'"]'))) return xps666('//*[@href="'+locator+'"]');
+if (chrome.exists(xps666('//*[contains(@href,"'+locator+'")]'))) return xps666('//*[contains(@href,"'+locator+'")]');
 return xps666('/html');}
 
 // for checking if given locator is found
 function check_tx(locator) {if (is_xpath_selector(locator))
-{if (casper.exists(xps666(locator))) return true; else return false;}
-if (casper.exists(locator)) return true; // check for css locator
+{if (chrome.exists(xps666(locator))) return true; else return false;}
+if (chrome.exists(locator)) return true; // check for css locator
 // first check for exact match then check for containing string
-if (casper.exists(xps666('//*[@id="'+locator+'"]'))) return true;
-if (casper.exists(xps666('//*[contains(@id,"'+locator+'")]'))) return true;
-if (casper.exists(xps666('//*[@name="'+locator+'"]'))) return true;
-if (casper.exists(xps666('//*[contains(@name,"'+locator+'")]'))) return true;
-if (casper.exists(xps666('//*[@class="'+locator+'"]'))) return true;
-if (casper.exists(xps666('//*[contains(@class,"'+locator+'")]'))) return true;
-if (casper.exists(xps666('//*[@title="'+locator+'"]'))) return true;
-if (casper.exists(xps666('//*[contains(@title,"'+locator+'")]'))) return true;
-if (casper.exists(xps666('//*[@aria-label="'+locator+'"]'))) return true;
-if (casper.exists(xps666('//*[contains(@aria-label,"'+locator+'")]'))) return true;
-if (casper.exists(xps666('//*[text()="'+locator+'"]'))) return true;
-if (casper.exists(xps666('//*[contains(text(),"'+locator+'")]'))) return true;
-if (casper.exists(xps666('//*[@href="'+locator+'"]'))) return true;
-if (casper.exists(xps666('//*[contains(@href,"'+locator+'")]'))) return true;
+if (chrome.exists(xps666('//*[@id="'+locator+'"]'))) return true;
+if (chrome.exists(xps666('//*[contains(@id,"'+locator+'")]'))) return true;
+if (chrome.exists(xps666('//*[@name="'+locator+'"]'))) return true;
+if (chrome.exists(xps666('//*[contains(@name,"'+locator+'")]'))) return true;
+if (chrome.exists(xps666('//*[@class="'+locator+'"]'))) return true;
+if (chrome.exists(xps666('//*[contains(@class,"'+locator+'")]'))) return true;
+if (chrome.exists(xps666('//*[@title="'+locator+'"]'))) return true;
+if (chrome.exists(xps666('//*[contains(@title,"'+locator+'")]'))) return true;
+if (chrome.exists(xps666('//*[@aria-label="'+locator+'"]'))) return true;
+if (chrome.exists(xps666('//*[contains(@aria-label,"'+locator+'")]'))) return true;
+if (chrome.exists(xps666('//*[text()="'+locator+'"]'))) return true;
+if (chrome.exists(xps666('//*[contains(text(),"'+locator+'")]'))) return true;
+if (chrome.exists(xps666('//*[@href="'+locator+'"]'))) return true;
+if (chrome.exists(xps666('//*[contains(@href,"'+locator+'")]'))) return true;
 return false;}
 
 /**
@@ -262,24 +262,24 @@ function visible(element_locator) {if (!element_locator) return false;
 if (is_sikuli(element_locator)) {var abs_param = abs_file(element_locator); var fs = require('fs');
 if (!fs.exists(abs_param)) {casper.echo('ERROR - cannot find image file for visible step').exit();}
 if (sikuli_step("visible " + abs_param)) return true; else return false;}
-else {var element_located = tx(element_locator); var element_visible = casper.elementVisible(element_located);
+else {var element_located = tx(element_locator); var element_visible = chrome.elementVisible(element_located);
 // if tx() returns xps666('/html') means that the element is not found, so set element_visible to false
 if (element_located.toString() == xps666('/html').toString()) element_visible = false; return element_visible;}}
 
 // friendlier name to count elements using countElements()
 function count(element_locator) {if (!element_locator) return 0;
-var element_located = tx(element_locator); var element_count = casper.countElements(element_located);
+var element_located = tx(element_locator); var element_count = chrome.countElements(element_located);
 // if tx() returns xps666('/html') means that the element is not found, so set element_count to 0
 if (element_located.toString() == xps666('/html').toString()) element_count = 0; return element_count;}
 
 // friendlier name to get web page title using getTitle()
-function title() {return casper.getTitle();}
+function title() {return chrome.getTitle();}
 
 // friendlier name to get web page url using getCurrentUrl() 
-function url() {return casper.getCurrentUrl();}
+function url() {return chrome.getCurrentUrl();}
 
 // friendlier name to get web page text content using evaluate()
-function text() {return casper.evaluate(function() {return document.body.innerText || document.body.textContent;});}
+function text() {return chrome.evaluate(function() {return document.body.innerText || document.body.textContent;});}
 
 function timer() { // return time elapsed in seconds between calls
 var time_elapsed = ((Date.now()-timer_start_time)/1000); timer_start_time = Date.now(); return time_elapsed;}
@@ -960,14 +960,14 @@ return "py_result = ''; if (!py_step('"+input_intent+"')) this.echo('ERROR - can
 
 function url_intent(raw_intent) {raw_intent = eval("'" + escape_bs(raw_intent) + "'"); // support dynamic variables
 if (chrome_id == 0) return "this.echo('ERROR - step only supported in live mode using Chrome browser')";
-else return "this.evaluate(function() {window.location.href = \"" + raw_intent + "\"})";}
+else return "chrome.evaluate(function() {window.location.href = \"" + raw_intent + "\"})";}
 
 function tap_intent(raw_intent) {raw_intent = eval("'" + escape_bs(raw_intent) + "'"); // support dynamic variables
 var params = ((raw_intent + ' ').substr(1+(raw_intent + ' ').indexOf(' '))).trim();
 if (is_sikuli(params)) {var abs_params = abs_file(params); var abs_intent = raw_intent.replace(params,abs_params);
 return call_sikuli(abs_intent,abs_params);} // use sikuli visual automation as needed
 if (params == '') return "this.echo('ERROR - target missing for " + raw_intent + "')";
-else if (check_tx(params)) return "this.click(tx('" + params + "'))";
+else if (check_tx(params)) return "chrome.click(tx('" + params + "'))";
 else return "this.echo('ERROR - cannot find " + params + "')";}
 
 function rtap_intent(raw_intent) {raw_intent = eval("'" + escape_bs(raw_intent) + "'"); // support dynamic variables
@@ -975,7 +975,7 @@ var params = ((raw_intent + ' ').substr(1+(raw_intent + ' ').indexOf(' '))).trim
 if (is_sikuli(params)) {var abs_params = abs_file(params); var abs_intent = raw_intent.replace(params,abs_params);
 return call_sikuli(abs_intent,abs_params);} // use sikuli visual automation as needed
 if (params == '') return "this.echo('ERROR - target missing for " + raw_intent + "')";
-else if (check_tx(params)) return "this.mouse.rightclick(tx('" + params + "'))";
+else if (check_tx(params)) return "chrome.mouse.rightclick(tx('" + params + "'))";
 else return "this.echo('ERROR - cannot find " + params + "')";}
 
 function dtap_intent(raw_intent) {raw_intent = eval("'" + escape_bs(raw_intent) + "'"); // support dynamic variables
@@ -983,7 +983,7 @@ var params = ((raw_intent + ' ').substr(1+(raw_intent + ' ').indexOf(' '))).trim
 if (is_sikuli(params)) {var abs_params = abs_file(params); var abs_intent = raw_intent.replace(params,abs_params);
 return call_sikuli(abs_intent,abs_params);} // use sikuli visual automation as needed
 if (params == '') return "this.echo('ERROR - target missing for " + raw_intent + "')";
-else if (check_tx(params)) return "this.mouse.doubleclick(tx('" + params + "'))";
+else if (check_tx(params)) return "chrome.mouse.doubleclick(tx('" + params + "'))";
 else return "this.echo('ERROR - cannot find " + params + "')";}
 
 function hover_intent(raw_intent) {raw_intent = eval("'" + escape_bs(raw_intent) + "'"); // support dynamic variables
@@ -991,7 +991,7 @@ var params = ((raw_intent + ' ').substr(1+(raw_intent + ' ').indexOf(' '))).trim
 if (is_sikuli(params)) {var abs_params = abs_file(params); var abs_intent = raw_intent.replace(params,abs_params);
 return call_sikuli(abs_intent,abs_params);} // use sikuli visual automation as needed
 if (params == '') return "this.echo('ERROR - target missing for " + raw_intent + "')";
-else if (check_tx(params)) return "this.mouse.move(tx('" + params + "'))";
+else if (check_tx(params)) return "chrome.mouse.move(tx('" + params + "'))";
 else return "this.echo('ERROR - cannot find " + params + "')";}
 
 function type_intent(raw_intent) {raw_intent = eval("'" + escape_bs(raw_intent) + "'"); // support dynamic variables
@@ -1004,11 +1004,11 @@ return call_sikuli(abs_intent,abs_param1);} // use sikuli visual automation as n
 if ((param1 == '') || (param2 == '')) return "this.echo('ERROR - target/text missing for " + raw_intent + "')";
 else if (check_tx(param1)) 
 {if (param2.indexOf('[clear]') == 0) {if (param2.length>7) param2 = param2.substr(7); else param2 = "";
-clear_field = "this.sendKeys(tx('" + param1 + "'),'',{reset: true}); ";} else clear_field = "";
-if (param2.indexOf('[enter]') == -1) return clear_field + "this.sendKeys(tx('" + param1 + "'),'" + param2 + "')";
+clear_field = "chrome.sendKeys(tx('" + param1 + "'),'',{reset: true}); ";} else clear_field = "";
+if (param2.indexOf('[enter]') == -1) return clear_field + "chrome.sendKeys(tx('" + param1 + "'),'" + param2 + "')";
 else // special handling to send enter key events
-{param2 = param2.replace(/\[enter\]/g,"',{keepFocus: true}); this.sendKeys(tx('" + param1 + "'),casper.page.event.key.Enter,{keepFocus: true}); this.sendKeys(tx('" + param1 + "'),'");
-return clear_field + "this.sendKeys(tx('" + param1 + "'),'" + param2 + "',{keepFocus: true});";}}
+{param2 = param2.replace(/\[enter\]/g,"',{keepFocus: true}); chrome.sendKeys(tx('" + param1 + "'),casper.page.event.key.Enter,{keepFocus: true}); chrome.sendKeys(tx('" + param1 + "'),'");
+return clear_field + "chrome.sendKeys(tx('" + param1 + "'),'" + param2 + "',{keepFocus: true});";}}
 else return "this.echo('ERROR - cannot find " + param1 + "')";}
 
 function select_intent(raw_intent) {raw_intent = eval("'" + escape_bs(raw_intent) + "'"); // support dynamic variables
@@ -1020,7 +1020,7 @@ var abs_param1 = abs_file(param1); var abs_intent = raw_intent.replace(param1,ab
 var abs_param2 = abs_file(param2); abs_intent = abs_intent.replace(param2,abs_param2);
 return call_sikuli(abs_intent,abs_param1);} // use sikuli visual automation as needed
 if ((param1 == '') || (param2 == '')) return "this.echo('ERROR - target/option missing for " + raw_intent + "')";
-else if (check_tx(param1)) return "var select_locator = tx('" + param1 + "'); if (is_xpath_selector(select_locator.toString().replace('xpath selector: ',''))) select_locator = select_locator.toString().substring(16); this.selectOptionByValue(select_locator,'" + param2 + "');";
+else if (check_tx(param1)) return "var select_locator = tx('" + param1 + "'); if (is_xpath_selector(select_locator.toString().replace('xpath selector: ',''))) select_locator = select_locator.toString().substring(16); chrome.selectOptionByValue(select_locator,'" + param2 + "');";
 else return "this.echo('ERROR - cannot find " + param1 + "')";}
 
 function read_intent(raw_intent) {raw_intent = eval("'" + escape_bs(raw_intent) + "'"); // support dynamic variables
@@ -1030,9 +1030,9 @@ var param2 = (params.substr(4+params.indexOf(' to '))).trim();
 if (is_sikuli(param1) && (params.indexOf(' to ') > -1)) { // use sikuli visual automation as needed
 var abs_param1 = abs_file(param1); var abs_intent = raw_intent.replace(param1,abs_param1);
 return call_sikuli(abs_intent,abs_param1,param2 + ' = fetch_sikuli_text(); clear_sikuli_text();');}
-if ((param1.toLowerCase() == 'page') && (param2 !== '')) return param2 + " = this.getHTML()";
+if ((param1.toLowerCase() == 'page') && (param2 !== '')) return param2 + " = chrome.getHTML()";
 if ((param1 == '') || (param2 == '')) return "this.echo('ERROR - target/variable missing for " + raw_intent + "')";
-else if (check_tx(param1)) return param2 + " =  this.fetchText(tx('" + param1 + "')).trim()";
+else if (check_tx(param1)) return param2 + " =  chrome.fetchText(tx('" + param1 + "')).trim()";
 else return "this.echo('ERROR - cannot find " + param1 + "')";}
 
 function show_intent(raw_intent) {raw_intent = eval("'" + escape_bs(raw_intent) + "'"); // support dynamic variables
@@ -1040,16 +1040,16 @@ var params = ((raw_intent + ' ').substr(1+(raw_intent + ' ').indexOf(' '))).trim
 if (is_sikuli(params)) { // use sikuli visual automation as needed
 var abs_params = abs_file(params); var abs_intent = raw_intent.replace(params,abs_params);
 return call_sikuli(abs_intent,abs_params,'this.echo(fetch_sikuli_text()); clear_sikuli_text();');}
-if (params.toLowerCase() == 'page') return "this.echo('" + raw_intent + "' + ' - ' + '\\n' + this.getHTML())";
+if (params.toLowerCase() == 'page') return "this.echo('" + raw_intent + "' + ' - ' + '\\n' + chrome.getHTML())";
 if (params == '') return "this.echo('ERROR - target missing for " + raw_intent + "')";
-else if (check_tx(params)) return "this.echo(this.fetchText(tx('" + params + "')).trim())";else return "this.echo('ERROR - cannot find " + params + "')";}
+else if (check_tx(params)) return "this.echo(chrome.fetchText(tx('" + params + "')).trim())";else return "this.echo('ERROR - cannot find " + params + "')";}
 
 function upload_intent(raw_intent) {raw_intent = eval("'" + escape_bs(raw_intent) + "'"); // support dynamic variables
 var params = ((raw_intent + ' ').substr(1+(raw_intent + ' ').indexOf(' '))).trim();
 var param1 = (params.substr(0,params.indexOf(' as '))).trim();
 var param2 = (params.substr(4+params.indexOf(' as '))).trim();
 if ((param1 == '') || (param2 == '')) return "this.echo('ERROR - filename missing for " + raw_intent + "')";
-else if (check_tx(param1)) return "this.page.uploadFile(tx('" + param1 + "'),'" + abs_file(param2) + "')";
+else if (check_tx(param1)) return "chrome.upload(tx('" + param1 + "'),'" + abs_file(param2) + "')";
 else return "this.echo('ERROR - cannot find " + param1 + "')";}
 
 function down_intent(raw_intent) {raw_intent = eval("'" + escape_bs(raw_intent) + "'"); // support dynamic variables
@@ -1057,7 +1057,7 @@ var params = ((raw_intent + ' ').substr(1+(raw_intent + ' ').indexOf(' '))).trim
 var param1 = (params.substr(0,params.indexOf(' to '))).trim();
 var param2 = (params.substr(4+params.indexOf(' to '))).trim();
 if ((param1 == '') || (param2 == '')) return "this.echo('ERROR - url/filename missing for " + raw_intent + "')";
-else return "this.download('" + param1 + "','" + abs_file(param2) + "')";}
+else return "chrome.download('" + param1 + "','" + abs_file(param2) + "')";}
 
 function receive_intent(raw_intent) {raw_intent = eval("'" + escape_bs(raw_intent) + "'"); // support dynamic variables
 return "this.echo('ERROR - step not supported in live mode, it requires creating CasperJS event')";}
@@ -1078,13 +1078,13 @@ else if (is_sikuli(params) && (params.indexOf(' to ') == -1)) {
 var abs_params = abs_file(params); var abs_intent = raw_intent.replace(params,abs_params);
 return call_sikuli(abs_intent,abs_param1,'save_text(\'\',fetch_sikuli_text()); clear_sikuli_text();');}
 if ((params.toLowerCase() == 'page') || (param1.toLowerCase() == 'page')) {
-if (params.indexOf(' to ') > -1) return "save_text('" + abs_file(param2) + "',this.getHTML())";
-else return "save_text('',this.getHTML())";}
+if (params.indexOf(' to ') > -1) return "save_text('" + abs_file(param2) + "',chrome.getHTML())";
+else return "save_text('',chrome.getHTML())";}
 if (params == '') return "this.echo('ERROR - target missing for " + raw_intent + "')";
 else if (params.indexOf(' to ') > -1)
-{if (check_tx(param1)) return "save_text('" + abs_file(param2) + "',this.fetchText(tx('" + param1 + "')).trim())";
+{if (check_tx(param1)) return "save_text('" + abs_file(param2) + "',chrome.fetchText(tx('" + param1 + "')).trim())";
 else return "this.echo('ERROR - cannot find " + param1 + "')";}
-else {if (check_tx(params)) return "save_text('',this.fetchText(tx('" + params + "')).trim())";
+else {if (check_tx(params)) return "save_text('',chrome.fetchText(tx('" + params + "')).trim())";
 else return "this.echo('ERROR - cannot find " + params + "')";}}
 
 function dump_intent(raw_intent) { // code to support dynamic variables not applicable
@@ -1126,13 +1126,13 @@ else if (is_sikuli(params) && (params.indexOf(' to ') == -1)) {
 var abs_params = abs_file(params); var abs_intent = raw_intent.replace(params,abs_params);
 return call_sikuli(abs_intent + ' to snap_image()',abs_params);} // handle no output filename
 if ((params.toLowerCase() == 'page') || (param1.toLowerCase() == 'page')) {
-if (params.indexOf(' to ') > -1) return "this.capture('" + abs_file(param2) + "')";
-else return "this.capture(snap_image())";}
+if (params.indexOf(' to ') > -1) return "chrome.capture('" + abs_file(param2) + "')";
+else return "chrome.capture(snap_image())";}
 if (params == '') return "this.echo('ERROR - target missing for " + raw_intent + "')";
 else if (params.indexOf(' to ') > -1)
-{if (check_tx(param1)) return "this.captureSelector('" + abs_file(param2) + "',tx('" + param1 + "'))"; 
+{if (check_tx(param1)) return "chrome.captureSelector('" + abs_file(param2) + "',tx('" + param1 + "'))"; 
 else return "this.echo('ERROR - cannot find " + param1 + "')";}
-else {if (check_tx(params)) return "this.captureSelector(snap_image(),tx('" + params + "'))";
+else {if (check_tx(params)) return "chrome.captureSelector(snap_image(),tx('" + params + "'))";
 else return "this.echo('ERROR - cannot find " + params + "')";}}
 
 function table_intent(raw_intent) {raw_intent = eval("'" + escape_bs(raw_intent) + "'"); // support dynamic variables
@@ -1194,7 +1194,7 @@ else if (raw_intent.toLowerCase() == 'dom finish') {inside_dom_block = 0; return
 if (inside_dom_block == 1) raw_intent = 'dom ' + raw_intent;
 var params = ((raw_intent + ' ').substr(1+(raw_intent + ' ').indexOf(' '))).trim();
 if (params == '') return "this.echo('ERROR - statement missing for " + raw_intent + "')";
-else return "dom_result = ''; dom_result = this.evaluate(function(dom_json) {" + params + "}, dom_json)";}
+else return "dom_result = ''; dom_result = chrome.evaluate(function(dom_json) {" + params + "}, dom_json)";}
 
 function js_intent(raw_intent) { // code to support dynamic variables not applicable
 if (raw_intent.toLowerCase() == 'js begin') {inside_js_block = 1; return '';}
@@ -1273,7 +1273,7 @@ xhttp.send(JSON.stringify(api_config.body)); return xhttp.responseText;}
 
 // custom function to handle dropdown option
 casper.selectOptionByValue = function(selector, valueToMatch) { // solution posted in casperjs issue #1390
-this.evaluate(function(selector, valueToMatch) {var found = false; // modified to allow xpath / css locators
+chrome.evaluate(function(selector, valueToMatch) {var found = false; // modified to allow xpath / css locators
 if ((selector.indexOf('/') == 0) || (selector.indexOf('(') == 0)) var select = __utils__.getElementByXPath(selector);
 else var select = document.querySelector(selector); // auto-select xpath or query css method to get element
 if (valueToMatch == '[clear]') valueToMatch = ''; // [clear] keyword to allow selecting empty / blank option
@@ -1287,7 +1287,7 @@ casper.elementVisible = function(selector) {return casper.visible(selector);} //
 
 // custom function to return element count
 casper.countElements = function(selector) { // use casperjs in-built function to maximize compatibility
-var count_result = casper.evaluate(function(selector) {return __utils__.findAll(selector).length;},selector);
+var count_result = chrome.evaluate(function(selector) {return __utils__.findAll(selector).length;},selector);
 try {if (count_result > 0) return count_result; else return 0;} catch(e) {return 0;}};
 
 // custom function from casperjs v1.1.5 (not yet released)
@@ -1407,39 +1407,37 @@ casper.echo('ERROR - ' + msg).exit();}
 // flow path for save_text and snap_image
 var flow_path = 'C:/Users/DELL/PycharmProjects/ProcessBudDevBranch/resource';
 
-casper.start('about:blank', function() {
-techo('about:blank' + ' - ' + this.getTitle() + '\n');});
-
 var home_path = 'C:/Users/DELL';
 
 var desktop_path = 'C:/Users/DELL/Desktop';
 
 var temp_path = 'C:/Users/DELL/AppData/Local/Temp';
 
-casper.then(function() { // start of JS code
-datalist=["1", "5"]
-}); // end of JS code
+casper.start('about:blank', function() {
+var download_path = flow_path; // to set path correctly for Windows
+if (download_path.indexOf(':')>0) download_path = download_path.replace(/\//g,'\\').replace(/\\/g,'\\');
+chrome_step('Page.setDownloadBehavior',{behavior: 'allow', downloadPath: download_path});
+chrome_step('Page.navigate',{url: 'https://randomkeygen.com/'}); sleep(1000);
+techo('https://randomkeygen.com/' + ' - ' + chrome.getTitle() + '\n');});
 
-casper.then(function() {techo('Wait 3');});
-casper.then(function() {casper.wait(3000, function() {});});
-
-casper.then(function() { // start of JS code
-len=datalist.length
-}); // end of JS code
-
-casper.then(function() {for (i=0; i <len;i++)
+casper.then(function() {for (i=0;i<5;i++)
 {casper.then(function() {for_loop_signal = '[CONTINUE_SIGNAL][i]';});
 (function (i) { // start of IIFE pattern
 { // start of code block
 
-casper.then(function() {techo('Wait '+datalist[i]+'');});
-casper.then(function() {casper.wait((parseFloat(''+datalist[i]+'')*1000), function() {});});
+casper.then(function() {techo('Wait 2');});
+casper.then(function() {casper.wait(2000, function() {});});
+
+casper.then(function() {{techo('Click /html/body/div[2]/section/div[1]/a/span[1]');
+casper.waitFor(function check() {return check_tx('/html/body/div[2]/section/div[1]/a/span[1]');},
+function then() {chrome.click(tx('/html/body/div[2]/section/div[1]/a/span[1]'));},
+function timeout() {this.echo('ERROR - cannot find /html/body/div[2]/section/div[1]/a/span[1]').exit();});}});
 
 } // end of code block
 })(i); // end of IIFE pattern, with dummy marker for break step
 casper.then(function() {for_loop_signal = '[BREAK_SIGNAL][i]';});}});
 
-casper.then(function() {techo('\n' + this.getCurrentUrl() + ' - ' + this.getTitle());
+casper.then(function() {techo('\n' + chrome.getCurrentUrl() + ' - ' + chrome.getTitle());
 techo('FINISH - automation finished - ' + ((Date.now()-automation_start_time)/1000).toFixed(1) + 's\n');});
 
 casper.run();

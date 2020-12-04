@@ -19,6 +19,7 @@ class runProcess():
 
             self.data['nodes'] = sorted(self.data['nodes'], key=lambda k: k['pos_x'])
             run_cmd = ""
+            steps = ""
             start = 0
             file_empty = 0
             edge_val = []
@@ -38,9 +39,8 @@ class runProcess():
                     break
             else:
                 continue
-            if node_dt['content']['value']=="item":
-                node_dt['content']['value']="'+datalist[i]+'"
-
+            if node_dt['content']['value'] == "item":
+                node_dt['content']['value'] = "'+datalist[i]+'"
 
             print(node_dt['title'] + " " + node_dt['content']['value'])
             if node_dt['title'] == "Open url":
@@ -71,37 +71,44 @@ class runProcess():
             elif node_dt['title'] == "Loop start":
                 loop_dt = node_dt['content']['value'].split()
                 dt = loop_dt[-1]
-                rowCount = tbl.rowCount()
-                columnCount = tbl.columnCount()
-                for row in range(rowCount):
-                    for column in range(columnCount):
-                        widgetItem = tbl.item(row, column)
-                        heading = tbl.horizontalHeaderItem(column).text()
-                        if heading == "Name" and widgetItem is not None:
-                            if widgetItem.text() == dt:
-                                print(widgetItem.text())
-                            else:
-                                break
-                        if heading == "Value" and widgetItem is not None:
-                            datalist = widgetItem.text()
-                            datalist = datalist.replace("[", '')
-                            datalist = datalist.replace("]", '')
-                            datalist = datalist.split(",")
-                            script = os.path.join("resource", "script.tagui")
-                            print(run_cmd, "run")
-                            if file_empty == 0:
-                                with open(script, "w") as f:
-                                    f.write("datalist=")
-                                    f.write(json.dumps(datalist))
-                                    file_empty = 1
-                            else:
-                                with open(script, "a") as f:
-                                    f.write("datalist=")
-                                    f.write(json.dumps(datalist))
+                if "item" in node_dt['content']['value']:
 
-                            steps = "\nlen=datalist.length\n"
-                            run_cmd += steps
-                            steps = "for (i=0; i <len;i++)\n{\n"
+                    rowCount = tbl.rowCount()
+                    columnCount = tbl.columnCount()
+                    for row in range(rowCount):
+                        for column in range(columnCount):
+                            widgetItem = tbl.item(row, column)
+                            heading = tbl.horizontalHeaderItem(column).text()
+                            if heading == "Name" and widgetItem is not None:
+                                if widgetItem.text() == dt:
+                                    print(widgetItem.text())
+                                else:
+                                    break
+                            if heading == "Value" and widgetItem is not None:
+                                datalist = widgetItem.text()
+                                datalist = datalist.replace("[", '')
+                                datalist = datalist.replace("]", '')
+                                datalist = datalist.split(",")
+                                script = os.path.join("resource", "script.tagui")
+                                print(run_cmd, "run")
+                                if file_empty == 0:
+                                    with open(script, "w") as f:
+                                        f.write("datalist=")
+                                        f.write(json.dumps(datalist))
+                                        file_empty = 1
+                                else:
+                                    with open(script, "a") as f:
+                                        f.write("datalist=")
+                                        f.write(json.dumps(datalist))
+
+                                steps = "\nlen=datalist.length\n"
+                                run_cmd += steps
+                                steps = "for (i=0; i <len;i++)\n{\n"
+
+                else:
+
+                    steps = "for (i=0;i<" + dt + ";i++)\n{\n"
+
 
             elif node_dt['title'] == "Loop end":
                 print("loop end")
