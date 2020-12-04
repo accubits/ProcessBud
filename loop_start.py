@@ -35,7 +35,7 @@ class loopStartWindow(QtWidgets.QMainWindow):
         self.loop_combo.currentTextChanged.connect(self.loop_combobox_changed)
 
         self.loop_attr = self.obj.edit.text()
-        self.loop_val=[]
+        self.loop_val = []
         if self.loop_attr == "":
             print("empty loop")
 
@@ -47,15 +47,13 @@ class loopStartWindow(QtWidgets.QMainWindow):
                 self.loop_val.append("List")
                 self.loop_val.append(self.loop_attr[1])
 
-                # self.loop_attr = self.loop_attr[1]
-                # print(self.loop_attr)
+
             else:
                 self.loop_attr = self.loop_attr.replace("loop count", "")
-                self.loop_attr=self.loop_attr.replace(" ", "")
-                print("nt",self.loop_attr)
+                self.loop_attr = self.loop_attr.replace(" ", "")
+
                 self.loop_val.append("Counter")
                 self.loop_val.append(self.loop_attr)
-                # print(self.loop_attr)
 
         self.forList = []
 
@@ -80,8 +78,6 @@ class loopStartWindow(QtWidgets.QMainWindow):
         self.resize(650, 250)
         self.setWindowTitle("Properties for loopstart")
 
-
-
         self.loop_list_lbl1 = QtWidgets.QLabel(self)
 
         self.loop_list_lbl1.setGeometry(QtCore.QRect(10, 90, 151, 31))
@@ -91,7 +87,6 @@ class loopStartWindow(QtWidgets.QMainWindow):
         self.loop_list_txt1 = QtWidgets.QLineEdit(self)
         self.loop_list_txt1.setGeometry(QtCore.QRect(65, 90, 50, 30))
         self.loop_list_txt1.setObjectName("textEdit1")
-        # self.looptextEdit1.setText(self.loop_attr[0])
         self.loop_list_txt1.setText("item")
         self.loop_list_txt1.setReadOnly(True)
 
@@ -104,7 +99,7 @@ class loopStartWindow(QtWidgets.QMainWindow):
         self.loop_list_txt2 = QtWidgets.QLineEdit(self)
         self.loop_list_txt2.setGeometry(QtCore.QRect(170, 90, 170, 30))
         self.loop_list_txt2.setObjectName("textEdit2")
-        # self.loop_list_txt2.setText(self.loop_attr)
+
         self.loop_list_txt2.setPlaceholderText("Enter the List Variable")
         self.loop_list_txt2.setCompleter(completer)
 
@@ -117,8 +112,7 @@ class loopStartWindow(QtWidgets.QMainWindow):
         self.currentOption = str(self.loop_combo.currentText())
 
         if len(self.loop_val) > 0:
-            print("j")
-            if self.loop_val[0]=="List":
+            if self.loop_val[0] == "List":
                 print(self.loop_val[0])
                 self.loop_list_txt2.setText(self.loop_val[1])
                 self.loop_combo.setCurrentText("List")
@@ -128,12 +122,10 @@ class loopStartWindow(QtWidgets.QMainWindow):
                 self.loop_combo.setCurrentText("Counter")
         else:
 
-            print("i")
             if self.currentOption == "List":
                 self.loop_list_txt2.setText("")
             else:
                 self.counter.setValue(0)
-
 
         self.loop_Apply_Button = QtWidgets.QPushButton(self)
         self.loop_Apply_Button.setGeometry(QtCore.QRect(260, 180, 75, 31))
@@ -152,7 +144,6 @@ class loopStartWindow(QtWidgets.QMainWindow):
 
         print(self.currentOption)
         if self.currentOption == "List":
-            print("here")
             self.loop_list_lbl1.show()
             self.loop_list_txt1.show()
             self.loop_list_lbl2.show()
@@ -167,7 +158,7 @@ class loopStartWindow(QtWidgets.QMainWindow):
             self.loop_list_txt2.hide()
             self.counter_lbl.show()
             self.counter.show()
-            # self.counter.setValue(self.loop_attr)
+
 
     def writeScript(self):
         if self.currentOption == "List":
