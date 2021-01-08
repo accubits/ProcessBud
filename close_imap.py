@@ -34,6 +34,7 @@ class closeimapWindow(QtWidgets.QMainWindow):
         self.apply_Button.clicked.connect(self.writeToNode)
 
 
+
     '''
     Script Generation and write to File
     '''
@@ -41,6 +42,7 @@ class closeimapWindow(QtWidgets.QMainWindow):
         data = self.sessionname.text()
         self.obj.edit.setText(data)
         self.node_editor.scene.data_changed = 1
+
 
         # script = os.path.join("resource", "script.tagui")
         # with open(script, "a") as f:

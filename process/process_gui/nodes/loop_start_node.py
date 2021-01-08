@@ -3,7 +3,7 @@ from PyQt5.QtCore import *
 from process.process_gui.process_conf import *
 from process.process_gui.process_node_base import *
 # from process.process_gui.process_node_base import ProcessGraphicsNode
-from nodeeditor.utils import dumpException
+from node_editor.utils import dumpException
 
 
 

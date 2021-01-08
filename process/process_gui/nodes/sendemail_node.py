@@ -1,7 +1,7 @@
 from PyQt5 import QtCore
 from process.process_gui.process_conf import *
 from process.process_gui.process_node_base import *
-from nodeeditor.utils import dumpException
+from node_editor.utils import dumpException
 
 
 

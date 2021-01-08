@@ -17,7 +17,7 @@ from node_editor.node_scene_history import SceneHistory
 from node_editor.node_scene_clipboard import SceneClipboard
 from node_editor.utils import pp
 # from pymongo import MongoClient
-from database import Database
+# from database import Database
 
 DEBUG_REMOVE_WARNINGS = False
 
@@ -42,6 +42,7 @@ class Scene(Serializable):
         super().__init__()
         self.nodes = []
         self.edges = []
+        self.variables = []
 
         # current filename assigned to this scene
         self.filename = None
@@ -76,7 +77,7 @@ class Scene(Serializable):
         # self.variableDt = self.db.Variables
         # print(MongoClient)
 
-        Database.initialize()
+        # Database.initialize()
 
     @property
     def has_been_modified(self):
@@ -337,36 +338,20 @@ class Scene(Serializable):
         """
         print("tbl", tbl)
 
-
         with open(filename, "w") as file:
-            file.write(json.dumps(self.serialize(), indent=4))
-            print("saving to", filename, "was successfull.")
-            pr_data = Database.find('Projects', {"name": filename})
-            print("pr_data", pr_data)
-            print("length", pr_data.count())
-            for item in pr_data:
-                pr_id = item.get('_id')
-                print("pr_id", pr_id)
+            # file.write(json.dumps(self.serialize(), indent=4))
+            # print("saving to", filename, "was successfull.")
+            self.variables = []
+            print("length is", len(self.variables))
 
-            if pr_data.count() > 0:
-                print("project name already added")
-                result = Database.del_many('Variables', {"Pr_id": pr_id})
-                print("delete count:", result.deleted_count)
-            else:
-                pr_name = {"name": filename}
-                insertProject = Database.insert('Projects', pr_name)
-                print("Project Id ", insertProject.inserted_id)
-                pr_id = insertProject.inserted_id
-
-            if tbl == "":
-                print("Table Null")
-            else:
+            if len(self.variables) == 0:
 
                 rowCount = tbl.rowCount()
                 columnCount = tbl.columnCount()
                 for row in range(rowCount):
-                    rowData = {"Name": "", "Type": "", "Default value": "", "Pr_id": ""}
-                    rowData["Pr_id"] = pr_id
+                    # rowData = {"Name": "", "Type": "", "Default value": "", "Pr_id": ""}
+                    rowData = {"Name": "", "Type": "", "Default value": ""}
+                    # rowData["Pr_id"] = pr_id
                     for column in range(columnCount):
                         widgetItem = tbl.item(row, column)
                         heading = tbl.horizontalHeaderItem(column).text()
@@ -381,9 +366,12 @@ class Scene(Serializable):
 
                             rowData["Default value"] = widgetItem.text()
 
-
                     # self.variableDt.insert_one(rowData)
-                    Database.insert('Variables', rowData)
+                    # Database.insert('Variables', rowData)
+                    print("data", rowData)
+                    self.variables.append(rowData)
+            file.write(json.dumps(self.serialize(), indent=4))
+            print("saving to", filename, "was successfull.")
 
             self.has_been_modified = False
             self.filename = filename
@@ -447,6 +435,7 @@ class Scene(Serializable):
             ('scene_height', self.scene_height),
             ('nodes', nodes),
             ('edges', edges),
+            ('variable', self.variables)
         ])
 
     def deserialize(self, data: dict, hashmap: dict = {}, restore_id: bool = True, *args, **kwargs) -> bool:

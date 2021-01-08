@@ -1,17 +1,17 @@
 {
-    "id": 2445738060656,
+    "id": 1645421414216,
     "scene_width": 64000,
     "scene_height": 64000,
     "nodes": [
         {
-            "id": 2445646583064,
-            "title": "Open url",
-            "pos_x": -336.0,
-            "pos_y": -93.0,
+            "id": 1645421456520,
+            "title": "Loop start",
+            "pos_x": -264.0,
+            "pos_y": -82.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 2445646582616,
+                    "id": 1645421456576,
                     "index": 0,
                     "multi_edges": true,
                     "position": 5,
@@ -20,47 +20,18 @@
             ],
             "start": "1",
             "content": {
-                "value": "https://randomkeygen.com/"
-            },
-            "op_code": 3
-        },
-        {
-            "id": 2445646582280,
-            "title": "Loop start",
-            "pos_x": -136.0,
-            "pos_y": -25.0,
-            "inputs": [
-                {
-                    "id": 2445646585248,
-                    "index": 0,
-                    "multi_edges": false,
-                    "position": 2,
-                    "socket_type": 1
-                }
-            ],
-            "outputs": [
-                {
-                    "id": 2445646585304,
-                    "index": 0,
-                    "multi_edges": true,
-                    "position": 5,
-                    "socket_type": 1
-                }
-            ],
-            "start": "0",
-            "content": {
                 "value": "loop count 5"
             },
             "op_code": 10
         },
         {
-            "id": 2445738058248,
+            "id": 1645432496312,
             "title": "Wait",
-            "pos_x": 55.0,
-            "pos_y": 62.0,
+            "pos_x": -53.0,
+            "pos_y": -16.0,
             "inputs": [
                 {
-                    "id": 2445738057912,
+                    "id": 1645432496200,
                     "index": 0,
                     "multi_edges": false,
                     "position": 2,
@@ -69,7 +40,7 @@
             ],
             "outputs": [
                 {
-                    "id": 2445646373832,
+                    "id": 1645432496872,
                     "index": 0,
                     "multi_edges": true,
                     "position": 5,
@@ -78,47 +49,18 @@
             ],
             "start": "0",
             "content": {
-                "value": "2"
+                "value": "1"
             },
             "op_code": 2
         },
         {
-            "id": 2445646376184,
-            "title": "Click",
-            "pos_x": 253.0,
-            "pos_y": 127.0,
-            "inputs": [
-                {
-                    "id": 2445646376016,
-                    "index": 0,
-                    "multi_edges": false,
-                    "position": 2,
-                    "socket_type": 1
-                }
-            ],
-            "outputs": [
-                {
-                    "id": 2445646376520,
-                    "index": 0,
-                    "multi_edges": true,
-                    "position": 5,
-                    "socket_type": 1
-                }
-            ],
-            "start": "0",
-            "content": {
-                "value": "/html/body/div[2]/section/div[1]/a/span[1]"
-            },
-            "op_code": 1
-        },
-        {
-            "id": 2445876269008,
+            "id": 1645432651224,
             "title": "Loop end",
-            "pos_x": 475.32421875,
-            "pos_y": 174.06249999999994,
+            "pos_x": 159.0,
+            "pos_y": 38.0,
             "inputs": [
                 {
-                    "id": 2445876268840,
+                    "id": 1645432651280,
                     "index": 0,
                     "multi_edges": false,
                     "position": 2,
@@ -127,7 +69,7 @@
             ],
             "outputs": [
                 {
-                    "id": 2445606178096,
+                    "id": 1645432651504,
                     "index": 0,
                     "multi_edges": true,
                     "position": 5,
@@ -143,28 +85,17 @@
     ],
     "edges": [
         {
-            "id": 2445737880208,
+            "id": 1645432537608,
             "edge_type": 2,
-            "start": 2445646582616,
-            "end": 2445646585248
+            "start": 1645421456576,
+            "end": 1645432496200
         },
         {
-            "id": 2445738058696,
+            "id": 1645432651616,
             "edge_type": 2,
-            "start": 2445646585304,
-            "end": 2445738057912
-        },
-        {
-            "id": 2445646376464,
-            "edge_type": 2,
-            "start": 2445646373832,
-            "end": 2445646376016
-        },
-        {
-            "id": 2445876486496,
-            "edge_type": 2,
-            "start": 2445646376520,
-            "end": 2445876268840
+            "start": 1645432496872,
+            "end": 1645432651280
         }
-    ]
+    ],
+    "variable": []
 }

@@ -84,6 +84,11 @@ class runProcess():
                                     print(widgetItem.text())
                                 else:
                                     break
+                            # if heading == "Type" and tbl.cellWidget(row, column).currentText() == "List":
+                            #     continue
+                            # else:
+                            #     break
+
                             if heading == "Value" and widgetItem is not None:
                                 datalist = widgetItem.text()
                                 datalist = datalist.replace("[", '')

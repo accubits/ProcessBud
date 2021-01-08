@@ -11,6 +11,7 @@ OP_Node_CLOSE_SESSION = 8
 OP_Node_SEND_EMAIL = 9
 OP_Node_Loopstart=10
 OP_Node_Loopend=11
+OP_NODE_Keys=12
 
 
 CALC_NODES = {

@@ -29,7 +29,7 @@ Edge.registerEdgeValidator(edge_cannot_connect_input_and_output_of_same_node)
 from process.properties import PropertiesPanel
 from process.process_gui import process_run
 
-from database import Database
+# from database import Database
 
 DEBUG = False
 
@@ -176,46 +176,27 @@ class main_Window(NodeEditorWindow):
                         # we need to create new subWindow and open the file
                         nodeeditor = ProcessSubWindow()
                         if nodeeditor.fileLoad(fname):
-
-                            pr_data = Database.find('Projects', {"name": fname})
                             self.variableTable.setRowCount(0)
-                            if pr_data.count() > 0:
-
-                                for item in pr_data:
-                                    pr_id = item.get('_id')
-                                result = Database.find('Variables', {"Pr_id": pr_id})
-                                print(result)
-                                for dt in result:
-                                    # print(dt['Type'])
-                                    Name = dt['Name']
-                                    Value = dt['Default value']
+                            print("filename",fname)
+                            with open(fname) as f:
+                                self.data = json.load(f)
+                                for dt in self.data['variable']:
+                                    Name=dt['Name']
+                                    Value=dt['Default value']
                                     name = QTableWidgetItem(Name)
                                     value = QTableWidgetItem(Value)
-
-                                    # name = QLineEdit()
-                                    # name.setText(dt['Name'])
-                                    # value=QLineEdit()
-                                    # value.setText(dt['Default value'])
                                     rowPosition = self.variableTable.rowCount()
                                     self.variableTable.insertRow(rowPosition)
                                     self.variableTable.setItem(rowPosition, 0, name)
                                     self.variableTable.setItem(rowPosition, 2, value)
-
-                                    # self.variableTable.setCellWidget(rowPosition, 0, name)
-                                    # self.variableTable.setCellWidget(rowPosition, 2, value)
                                     combo = QComboBox(self)
                                     combo.addItem("String")
                                     combo.addItem("List")
-
                                     combo.setCurrentText(dt['Type'])
                                     self.variableTable.setCellWidget(rowPosition, 1, combo)
                                     self.delrow = QPushButton("Delete", self)
                                     self.delrow.clicked.connect(self.deleteClicked)
                                     self.variableTable.setCellWidget(rowPosition, 3, self.delrow)
-
-                                    # self.variableTable.setCellWidget(rowPosition, 1, self.type)
-                                    # self.variableTable.setCellWidget(rowPosition, 3, self.delrow)
-                                    # print(result['Type'])
 
                             nodeeditor.scene.data_changed = 0
 
@@ -323,9 +304,6 @@ class main_Window(NodeEditorWindow):
 
             current_nodeeditor.fileSave(current_nodeeditor.filename, self.variableTable)
             self.statusBar().showMessage("Successfully saved %s" % current_nodeeditor.filename, 5000)
-            # pr_name = {"name": current_nodeeditor.filename}
-            # prid = self.projectDt.insert_one(pr_name)
-            # print("Project Id ", prid.inserted_id)
 
             # support for MDI app
             if hasattr(current_nodeeditor, "setTitle"):
@@ -409,6 +387,36 @@ class main_Window(NodeEditorWindow):
         active = self.getCurrentNodeEditorWidget()
         hasMdiChild = (active is not None)
 
+        # self.variableTable.setRowCount(0)
+        if active is not None:
+            if not active.isFilenameSet():
+                print("untitled project")
+
+            elif "Untitled_Project" in active.getUserFriendlyFilename():
+                print("untitled json")
+            else:
+               self.variableTable.setRowCount(0)
+               fname=active.filename
+               with open(fname) as f:
+                   self.data = json.load(f)
+                   for dt in self.data['variable']:
+                       Name = dt['Name']
+                       Value = dt['Default value']
+                       name = QTableWidgetItem(Name)
+                       value = QTableWidgetItem(Value)
+                       rowPosition = self.variableTable.rowCount()
+                       self.variableTable.insertRow(rowPosition)
+                       self.variableTable.setItem(rowPosition, 0, name)
+                       self.variableTable.setItem(rowPosition, 2, value)
+                       combo = QComboBox(self)
+                       combo.addItem("String")
+                       combo.addItem("List")
+                       combo.setCurrentText(dt['Type'])
+                       self.variableTable.setCellWidget(rowPosition, 1, combo)
+                       self.delrow = QPushButton("Delete", self)
+                       self.delrow.clicked.connect(self.deleteClicked)
+                       self.variableTable.setCellWidget(rowPosition, 3, self.delrow)
+
         self.actSave.setEnabled(hasMdiChild)
         self.actSaveAs.setEnabled(hasMdiChild)
         self.actClose.setEnabled(hasMdiChild)
@@ -482,6 +490,9 @@ class main_Window(NodeEditorWindow):
             action.triggered.connect(self.windowMapper.map)
             self.windowMapper.setMapping(action, window)
 
+
+
+
     def onWindowNodesToolbar(self):
 
         if self.nodesDock.isVisible():
@@ -508,6 +519,24 @@ class main_Window(NodeEditorWindow):
 
     def createNodesDock(self):
 
+        # self.featuresWidget=QWidget()
+        # self.le_search = QLineEdit()
+        # self.se_btn = QPushButton()
+        # self.se_btn.setText("Search")
+        # self.searchbox = QHBoxLayout()
+        # self.searchbox.addWidget(self.le_search)  # self.   +++
+        # self.searchbox.addWidget(self.se_btn)
+        # self.nodesListWidget = QDMDragListbox()
+        # self.nodeLayout = QVBoxLayout(self)
+        # self.nodeLayout.addLayout(self.searchbox)
+        # self.nodeLayout.addWidget(self.nodesListWidget)
+        # self.featuresWidget.setLayout(self.nodeLayout)
+        # self.nodesDock = QDockWidget("Features Panel")
+        # self.nodesDock.setWidget(self.featuresWidget)
+        # self.nodesDock.setFloating(False)
+        # self.addDockWidget(Qt.LeftDockWidgetArea, self.nodesDock)
+
+
         self.nodesListWidget = QDMDragListbox()
 
         self.nodesDock = QDockWidget("Features Panel")
@@ -526,30 +555,10 @@ class main_Window(NodeEditorWindow):
 
         self.addDockWidget(Qt.BottomDockWidgetArea, self.outDock)
 
-        # self.outWidget = QWidget(self)
-        # # creating a vertical box layout
-        # self.outputLayout = QVBoxLayout(self)
-        #
-        # self.outputWidget = QListWidget()
-        # self.text=QLabel()
-        # self.text.setText("test")
-        # self.outputLayout.addWidget(self.text)
-        # self.outputLayout.stretch(1)
-        # self.outputLayout.addWidget(self.outputWidget)
-        # self.outWidget.setLayout(self.outputLayout)
-        #
-        #
-        #
-        # self.outDock = QDockWidget("Output Panel")
-        # self.outDock.setWidget(self.outWidget)
-        # self.outDock.setFloating(True)
-        # # self.outDock.widget().setMinimumSize(QSize(500, 150))
-        #
-        # self.addDockWidget(Qt.BottomDockWidgetArea, self.outDock)
 
-        # @pyqtSlot(str)
 
     def variableDtDock(self):
+
         current_nodeeditor = self.getCurrentNodeEditorWidget()
         # if current_nodeeditor==nodeeditor:
 
@@ -590,6 +599,8 @@ class main_Window(NodeEditorWindow):
         self.variableTable.insertRow(rowPosition)
         self.variableTable.setCellWidget(rowPosition, 1, self.type)
         self.variableTable.setCellWidget(rowPosition, 3, self.delrow)
+
+
         # self.variableTable.setItem(rowPosition, 2, QTableWidgetItem(self.delrow))
 
     @pyqtSlot()
@@ -626,6 +637,7 @@ class main_Window(NodeEditorWindow):
         nodeeditor.scene.history.addHistoryModifiedListener(self.updateEditMenu)
         nodeeditor.addCloseEventListener(self.onSubWndClose)
 
+
         nodeeditor.scene.data_changed = 0
         # self.variableDtDock(nodeeditor)
         return subwnd
@@ -633,6 +645,7 @@ class main_Window(NodeEditorWindow):
     def onSubWndClose(self, widget, event):
         existing = self.findMdiChild(widget.filename)
         self.mdiArea.setActiveSubWindow(existing)
+
 
         self.variableDock.hide()
 
@@ -651,6 +664,7 @@ class main_Window(NodeEditorWindow):
         if window:
             self.mdiArea.setActiveSubWindow(window)
 
+
     def stopapp(self):
         stop_process = os.path.join("resource", "end_processes.cmd")
         subprocess.call(stop_process)
@@ -659,6 +673,7 @@ class main_Window(NodeEditorWindow):
         msg.setText("Curent Process Excecution has been Stopped ")
         msg.setWindowTitle("Information")
         msg.setStandardButtons(QMessageBox.Ok)
+
         returnValue = msg.exec()
 
 

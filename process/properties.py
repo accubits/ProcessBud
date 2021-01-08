@@ -13,6 +13,8 @@ class PropertiesPanel(QDockWidget):
         self.propertytab(self)
 
     def propertytab(self, controls, obj_val, node_editor, tbl):
+        x = 350
+        y = 200
         print(obj_val)
         if not hasattr(self, 'nodesPropertyDock'):
             self.nodesPropertyWidget = QListWidget()
@@ -65,11 +67,17 @@ class PropertiesPanel(QDockWidget):
             import loop_start
             print("loop started")
             self.nodesPropertyDock.setWidget(loop_start.loopStartWindow(obj_val, node_editor, tbl))
-        elif  controls=="Loop end":
+        elif controls == "Loop end":
             import loop_end
             print("loop ended")
             self.nodesPropertyDock.setWidget(loop_end.loopEndWindow(obj_val, node_editor, tbl))
+        elif controls == "Short keys":
+            x = 440
+            y = 300
+            import keyboard
+            self.nodesPropertyDock.setWidget(keyboard.keyWindow(obj_val, node_editor))
 
-        self.nodesPropertyDock.widget().setMinimumSize(QSize(350, 200))
+        self.nodesPropertyDock.widget().setMinimumSize(QSize(x, y))
+        # self.nodesPropertyDock.widget().setMinimumSize(QSize(350, 200))
         self.nodesPropertyDock.setFloating(False)
         self.addDockWidget(Qt.RightDockWidgetArea, self.nodesPropertyDock)
