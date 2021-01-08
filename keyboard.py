@@ -4,29 +4,22 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class keyWindow(QtWidgets.QMainWindow):
-    def __init__(self,obj,node_editor):
+    def __init__(self, obj, node_editor):
         super(keyWindow, self).__init__()
-        # self.setStyleSheet("QMainWindow {background: 'white';border: 1px solid grey}")
+
         self.obj = obj
-        print("obj is",self.obj.edit.text())
-        print("bt is",self.obj.key)
-        if len(self.obj.key) >0:
-            self.keys=[]
-        for key in self.obj.key:
-            print("hi")
-            key.click()
-            key.setStyleSheet("background-color:black;color:white")
-        shrtkeys=self.obj.edit.text()
-        if shrtkeys=="":
+
+        shrtkeys = self.obj.edit.text()
+        if shrtkeys == "":
             print("empty keys")
         else:
-            keylist=shrtkeys.split(',')
+            keylist = shrtkeys.split(',')
         self.node_editor = node_editor
         self.initUI()
 
     def initUI(self):
         self.keys = []
-        self.bt=[]
+        self.bt = []
 
         self.resize(800, 500)
 
@@ -248,10 +241,7 @@ class keyWindow(QtWidgets.QMainWindow):
         self.apply_Button.clicked.connect(self.writeScript)
         self.apply_Button.setStyleSheet("background-color:#ebf5ed;padding:4px 4px 4px 4px;")
 
-        # self.listwidget = QtWidgets.QListWidget(self)
-        # self.listwidget.setGeometry(QtCore.QRect(600, 50, 170, 400))
-        # self.listwidget.setStyleSheet("background-color:#ebf5ed;padding:4px 4px 4px 4px;")
-        # self.show()
+
         _translate = QtCore.QCoreApplication.translate
         self.setWindowTitle(_translate("wait_Dialog", "Properties for Send Hot keys"))
         self.F1_Button.setText(_translate("wait_Dialog", "F1"))
@@ -299,53 +289,25 @@ class keyWindow(QtWidgets.QMainWindow):
         if val in self.keys:
             button.setStyleSheet("background-color:#E7DCD0")
             self.keys.remove(val)
-            # self.bt.remove(str(button))
             self.bt.remove(button)
-            print(self.keys)
-            print(self.bt)
+
         else:
-            # button.setStyleSheet("background-color:#F6D1AD;color:white")
+
             button.setStyleSheet("background-color:black;color:white")
-
             self.keys.append(val)
-            # self.bt.append(str(button))
             self.bt.append((button))
-            print("bt",button)
-            t=str(button)
-            # r=repr(t)
-            # print("r",r)
-            print(self.keys)
-            print(self.bt)
 
-        # self.listwidget.clear()
-        # for key in self.keys:
-        # 
-        #     self.listwidget.addItem(key)
-         # self.selKeyLabel.setText(key)
+
 
     def writeScript(self):
-        print("buttons",self.bt)
 
-        print("here")
-        # data=self.keys
-        data=",".join(self.keys)
-        # bt=",".join(self.bt)
+        data = ",".join(self.keys)
+
         self.obj.edit.setText(data)
-        self.obj.key=self.bt
-        # self.obj.key.setText(self.bt)
-        # x = json.dumps(for z in self.bt)
-        # print(x)
-        # self.obj.key.setText(bt)
+        self.obj.key = self.bt
+
         self.node_editor.scene.data_changed = 1
 
 
-    #     with open("resource/script.tagui", "a") as f:
-    #         f.write("\n")
-    #         f.write("py begin \n")
-    #         for val in self.keys:
-    #             f.write("KeyboardSend('" + val + "')\nSleep(0.5)\n")
-    #         f.write("py finish")
-    #     self.close()
 
-    def close_properties(self):
-        self.close()
+
