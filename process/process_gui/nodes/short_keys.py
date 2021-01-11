@@ -15,22 +15,17 @@ class KeysInputContent(QDMNodeContentWidget):
         self.edit.setGeometry(QtCore.QRect(6, 30, 155, 20))
         self.edit.setObjectName(self.node.content_label_objname)
 
-        self.key = []
-        # self.key.hide()
-
     def serialize(self):
         res = super().serialize()
         res['value'] = self.edit.text()
-        res['val'] = {"key":self.key}
+
         return res
 
     def deserialize(self, data, hashmap={}):
         res = super().deserialize(data, hashmap)
         try:
             value = data['value']
-            val = data['val']['key']
             self.edit.setText(value)
-            self.key = val
             return True & res
         except Exception as e:
             dumpException(e)
