@@ -1,11 +1,16 @@
 
-START - automation started - Fri Jan 08 2021 17:24:57 GMT+0530 (India Standard Time)
+START - automation started - Fri Jan 15 2021 18:09:25 GMT+0530 (India Standard Time)
 
-Wait 1
-Wait 1
-Wait 1
-Wait 1
-Wait 1
+py KeyboardSend('windows')
+py KeyboardSend('down')
+py KeyboardSend('down')
+py KeyboardSend('down')
+py KeyboardSend('down')
+py KeyboardSend('down')
+py KeyboardSend('down')
+py KeyboardSend('down')
+py KeyboardSend('down')
+py KeyboardSend('enter')
 
-FINISH - automation finished - 5.6s
+FINISH - automation finished - 2.5s
 

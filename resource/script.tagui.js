@@ -1416,17 +1416,32 @@ var desktop_path = 'C:/Users/DELL/Desktop';
 
 var temp_path = 'C:/Users/DELL/AppData/Local/Temp';
 
-casper.then(function() {for (i=0;i<5;i++)
+casper.then(function() {{techo('py KeyboardSend(\'windows\')');
+py_result = ''; if (!py_step('py KeyboardSend(\'windows\')'))
+this.echo('ERROR - cannot execute Python command(s)').exit(); this.wait(0);
+py_result = fetch_py_text(); clear_py_text();
+try {py_json = JSON.parse(py_result);} catch(e) {py_json = JSON.parse('null');}}});
+
+casper.then(function() {for (i=0;i<8;i++)
 {casper.then(function() {for_loop_signal = '[CONTINUE_SIGNAL][i]';});
 (function (i) { // start of IIFE pattern
 { // start of code block
 
-casper.then(function() {techo('Wait 1');});
-casper.then(function() {casper.wait(1000, function() {});});
+casper.then(function() {{techo('py KeyboardSend(\'down\')');
+py_result = ''; if (!py_step('py KeyboardSend(\'down\')'))
+this.echo('ERROR - cannot execute Python command(s)').exit(); this.wait(0);
+py_result = fetch_py_text(); clear_py_text();
+try {py_json = JSON.parse(py_result);} catch(e) {py_json = JSON.parse('null');}}});
 
 } // end of code block
 })(i); // end of IIFE pattern, with dummy marker for break step
 casper.then(function() {for_loop_signal = '[BREAK_SIGNAL][i]';});}});
+
+casper.then(function() {{techo('py KeyboardSend(\'enter\')');
+py_result = ''; if (!py_step('py KeyboardSend(\'enter\')'))
+this.echo('ERROR - cannot execute Python command(s)').exit(); this.wait(0);
+py_result = fetch_py_text(); clear_py_text();
+try {py_json = JSON.parse(py_result);} catch(e) {py_json = JSON.parse('null');}}});
 
 casper.then(function() {techo('\n' + this.getCurrentUrl() + ' - ' + this.getTitle());
 techo('FINISH - automation finished - ' + ((Date.now()-automation_start_time)/1000).toFixed(1) + 's\n');});

@@ -1,17 +1,17 @@
 {
-    "id": 1645421414216,
+    "id": 2477952962632,
     "scene_width": 64000,
     "scene_height": 64000,
     "nodes": [
         {
-            "id": 1645421456520,
-            "title": "Loop start",
-            "pos_x": -264.0,
-            "pos_y": -82.0,
+            "id": 2477953082760,
+            "title": "Short keys",
+            "pos_x": -449.0,
+            "pos_y": -121.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 1645421456576,
+                    "id": 2478004993272,
                     "index": 0,
                     "multi_edges": true,
                     "position": 5,
@@ -20,18 +20,18 @@
             ],
             "start": "1",
             "content": {
-                "value": "loop count 5"
+                "value": "windows"
             },
-            "op_code": 10
+            "op_code": 12
         },
         {
-            "id": 1645432496312,
-            "title": "Wait",
-            "pos_x": -53.0,
-            "pos_y": -16.0,
+            "id": 2478005030808,
+            "title": "Loop start",
+            "pos_x": -256.0,
+            "pos_y": -69.0,
             "inputs": [
                 {
-                    "id": 1645432496200,
+                    "id": 2478005059992,
                     "index": 0,
                     "multi_edges": false,
                     "position": 2,
@@ -40,7 +40,7 @@
             ],
             "outputs": [
                 {
-                    "id": 1645432496872,
+                    "id": 2478005059936,
                     "index": 0,
                     "multi_edges": true,
                     "position": 5,
@@ -49,18 +49,18 @@
             ],
             "start": "0",
             "content": {
-                "value": "1"
+                "value": "loop count 8"
             },
-            "op_code": 2
+            "op_code": 10
         },
         {
-            "id": 1645432651224,
-            "title": "Loop end",
-            "pos_x": 159.0,
-            "pos_y": 38.0,
+            "id": 2478005203128,
+            "title": "Short keys",
+            "pos_x": -70.0,
+            "pos_y": -5.0,
             "inputs": [
                 {
-                    "id": 1645432651280,
+                    "id": 2478005203296,
                     "index": 0,
                     "multi_edges": false,
                     "position": 2,
@@ -69,7 +69,36 @@
             ],
             "outputs": [
                 {
-                    "id": 1645432651504,
+                    "id": 2478005203520,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 5,
+                    "socket_type": 1
+                }
+            ],
+            "start": "0",
+            "content": {
+                "value": "down"
+            },
+            "op_code": 12
+        },
+        {
+            "id": 2478005205872,
+            "title": "Loop end",
+            "pos_x": 157.0,
+            "pos_y": 54.0,
+            "inputs": [
+                {
+                    "id": 2478005205928,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 2478005206152,
                     "index": 0,
                     "multi_edges": true,
                     "position": 5,
@@ -81,20 +110,61 @@
                 "value": "Loop ended"
             },
             "op_code": 11
+        },
+        {
+            "id": 2709516165696,
+            "title": "Short keys",
+            "pos_x": 372.0,
+            "pos_y": 100.0,
+            "inputs": [
+                {
+                    "id": 2709516165752,
+                    "index": 0,
+                    "multi_edges": false,
+                    "position": 2,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 2709516165976,
+                    "index": 0,
+                    "multi_edges": true,
+                    "position": 5,
+                    "socket_type": 1
+                }
+            ],
+            "start": "0",
+            "content": {
+                "value": "enter"
+            },
+            "op_code": 12
         }
     ],
     "edges": [
         {
-            "id": 1645432537608,
+            "id": 2478005113912,
             "edge_type": 2,
-            "start": 1645421456576,
-            "end": 1645432496200
+            "start": 2478004993272,
+            "end": 2478005059992
         },
         {
-            "id": 1645432651616,
+            "id": 2478005203912,
             "edge_type": 2,
-            "start": 1645432496872,
-            "end": 1645432651280
+            "start": 2478005059936,
+            "end": 2478005203296
+        },
+        {
+            "id": 2477963682816,
+            "edge_type": 2,
+            "start": 2478005203520,
+            "end": 2478005205928
+        },
+        {
+            "id": 2709516166200,
+            "edge_type": 2,
+            "start": 2478005206152,
+            "end": 2709516165752
         }
     ],
     "variable": []

@@ -1,9 +1,13 @@
 import os
 import datetime
+import time
+
 import simplejson as json
 import pymsgbox
 
 __version__ = "1.0.3"
+
+from resource.tagui_py import keyboard
 
 '''
 Email Operations
@@ -148,3 +152,22 @@ def __getMailByIndex(session, data, directory, index):
 
 def read_info(message):
     pymsgbox.alert(message, 'Read Element')
+
+
+'''
+Keyboard Events
+'''
+initKeyboard = None
+def KeyboardWrite(value):
+    global initKeyboard
+    if initKeyboard == None:
+        value = " " + value
+        initKeyboard = True
+
+    keyboard.write(value,delay=0.05)
+
+def KeyboardSend(value):
+    keyboard.send(value)
+
+def Sleep(seconds):
+    time.sleep(seconds)

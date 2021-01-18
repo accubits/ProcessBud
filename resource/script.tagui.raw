@@ -1,4 +1,12 @@
-for (i=0;i<5;i++)
+py begin
+KeyboardSend('windows')
+py finish
+for (i=0;i<8;i++)
 {
-Wait 1
+py begin
+KeyboardSend('down')
+py finish
 }
+py begin
+KeyboardSend('enter')
+py finish

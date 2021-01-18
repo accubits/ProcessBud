@@ -84,10 +84,6 @@ class runProcess():
                                     print(widgetItem.text())
                                 else:
                                     break
-                            # if heading == "Type" and tbl.cellWidget(row, column).currentText() == "List":
-                            #     continue
-                            # else:
-                            #     break
 
                             if heading == "Value" and widgetItem is not None:
                                 datalist = widgetItem.text()
@@ -118,6 +114,15 @@ class runProcess():
             elif node_dt['title'] == "Loop end":
                 print("loop end")
                 steps = "}\n"
+            elif node_dt['title'] == "Short keys":
+                keylist = node_dt['content']['value'].split(",")
+                key = ""
+                for val in keylist:
+                    keydt = "py begin\nKeyboardSend('" + val + "')\npy finish\n"
+                    key += keydt
+                steps = key
+
+
 
             else:
                 steps = node_dt['title'] + " " + node_dt['content']['value'] + "\n"

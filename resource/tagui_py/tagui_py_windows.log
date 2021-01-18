@@ -1,0 +1,11 @@
+[tagui] ACTION - KeyboardSend('windows')
+[tagui] ACTION - KeyboardSend('down')
+[tagui] ACTION - KeyboardSend('down')
+[tagui] ACTION - KeyboardSend('down')
+[tagui] ACTION - KeyboardSend('down')
+[tagui] ACTION - KeyboardSend('down')
+[tagui] ACTION - KeyboardSend('down')
+[tagui] ACTION - KeyboardSend('down')
+[tagui] ACTION - KeyboardSend('down')
+[tagui] ACTION - KeyboardSend('enter')
+[tagui] FINISH - stopped listening
