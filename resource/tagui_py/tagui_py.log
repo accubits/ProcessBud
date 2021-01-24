@@ -1,11 +1,48 @@
-[tagui] ACTION - KeyboardSend('windows')
-[tagui] ACTION - KeyboardSend('down')
-[tagui] ACTION - KeyboardSend('down')
-[tagui] ACTION - KeyboardSend('down')
-[tagui] ACTION - KeyboardSend('down')
-[tagui] ACTION - KeyboardSend('down')
-[tagui] ACTION - KeyboardSend('down')
-[tagui] ACTION - KeyboardSend('down')
-[tagui] ACTION - KeyboardSend('down')
-[tagui] ACTION - KeyboardSend('enter')
+[tagui] ACTION - sessionname= OpenIMAPSession('imap.gmail.com','dummytestrpa@gmail.com','abcd@1234',993)
+[tagui] ACTION - datamsg=FetchMail('SEEN',5,sessionname,'','','')
+print(datamsg)
+SEEN
+{
+    "attachments": [],
+    "body": "mail",
+    "datetime": "25.09.2020 13:36:47",
+    "from": "dummytestrpa@gmail.com",
+    "message_id": "<160102119991.4108.549128967001631734@DESKTOP-9PLUDPI>",
+    "subject": "test",
+    "to": "dummytestrpa@gmail.com"
+}
+<160102119991.4108.549128967001631734@DESKTOP-9PLUDPI>
+{
+    "attachments": [],
+    "body": "[image: Google]\r\nSign-in attempt was blocked\r\n\r\n\r\ndummytestrpa@gmail.com\r\nSomeone just used your password to try to sign in to your account from a\r\nnon-Google app. Google blocked them, but you should check what happened.\r\nReview your account activity to make sure no one else has access.\r\nCheck activity\r\n<https://accounts.google.com/AccountChooser?Email=dummytestrpa@gmail.com&continue=https://myaccount.google.com/alert/nt/1601013949000?rfn%3D27%26rfnc%3D1%26eid%3D-6729680124774840605%26et%3D0>\r\nYou received this email to let you know about important changes to your\r\nGoogle Account and services.\r\n\u00a9 2020 Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA\r\n",
+    "datetime": "25.09.2020 11:35:49",
+    "from": "Google <no-reply@accounts.google.com>",
+    "message_id": "<XWKGm7001U_EN_3zZaFDsQ.0@notifications.google.com>",
+    "subject": "Critical security alert",
+    "to": "dummytestrpa@gmail.com"
+}
+<XWKGm7001U_EN_3zZaFDsQ.0@notifications.google.com>
+{
+    "attachments": [],
+    "body": "[image: Google]\r\nAccess for less secure apps setting has been turned on\r\n\r\n\r\ndummytestrpa@gmail.com\r\nAccess for less secure apps setting has been turned on for your Google\r\nAccount dummytestrpa@gmail.com. If you didn't change it, you should check\r\nwhat happened.\r\nCheck activity\r\n<https://accounts.google.com/AccountChooser?Email=dummytestrpa@gmail.com&continue=https://myaccount.google.com/alert/nt/1597047100729?rfn%3D28%26rfnc%3D1%26eid%3D-1085575642991899590%26et%3D0>\r\nYou received this email to let you know about important changes to your\r\nGoogle Account and services.\r\n\u00a9 2020 Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA\r\n",
+    "datetime": "10.08.2020 13:41:40",
+    "from": "Google <no-reply@accounts.google.com>",
+    "message_id": "<Nf8R7oeAfoqY49nr1mQFzQ.0@notifications.google.com>",
+    "subject": "Critical security alert",
+    "to": "dummytestrpa@gmail.com"
+}
+<Nf8R7oeAfoqY49nr1mQFzQ.0@notifications.google.com>
+{
+    "attachments": [],
+    "body": "[image: Google]\r\nSign-in attempt was blocked\r\n\r\n\r\ndummytestrpa@gmail.com\r\nSomeone just used your password to try to sign in to your account from a\r\nnon-Google app. Google blocked them, but you should check what happened.\r\nReview your account activity to make sure no one else has access.\r\nCheck activity\r\n<https://accounts.google.com/AccountChooser?Email=dummytestrpa@gmail.com&continue=https://myaccount.google.com/alert/nt/1597046217000?rfn%3D27%26rfnc%3D1%26eid%3D-3081503780771990513%26et%3D0>\r\nYou received this email to let you know about important changes to your\r\nGoogle Account and services.\r\n\u00a9 2020 Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA\r\n",
+    "datetime": "10.08.2020 13:26:57",
+    "from": "Google <no-reply@accounts.google.com>",
+    "message_id": "<ApgxbIoMarK3FWDpKfK51A.0@notifications.google.com>",
+    "subject": "Critical security alert",
+    "to": "dummytestrpa@gmail.com"
+}
+<ApgxbIoMarK3FWDpKfK51A.0@notifications.google.com>
+None
+[tagui] ACTION - CloseIMAPSession()
+ERROR - CloseIMAPSession() missing 1 required positional argument: 'session'
 [tagui] FINISH - stopped listening

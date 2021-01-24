@@ -1,12 +1,11 @@
 py begin
-KeyboardSend('windows')
+sessionname= OpenIMAPSession('imap.gmail.com','dummytestrpa@gmail.com','abcd@1234',993)
 py finish
-for (i=0;i<8;i++)
-{
 py begin
-KeyboardSend('down')
+datamsg=FetchMail('SEEN',5,sessionname,'','','')
+print(datamsg)
 py finish
-}
+echo py_result
 py begin
-KeyboardSend('enter')
+CloseIMAPSession()
 py finish

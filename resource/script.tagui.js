@@ -1416,29 +1416,22 @@ var desktop_path = 'C:/Users/DELL/Desktop';
 
 var temp_path = 'C:/Users/DELL/AppData/Local/Temp';
 
-casper.then(function() {{techo('py KeyboardSend(\'windows\')');
-py_result = ''; if (!py_step('py KeyboardSend(\'windows\')'))
+casper.then(function() {{techo('py sessionname= OpenIMAPSession(\'imap.gmail.com\',\'dummytestrpa@gmail.com\',\'abcd@1234\',993)');
+py_result = ''; if (!py_step('py sessionname= OpenIMAPSession(\'imap.gmail.com\',\'dummytestrpa@gmail.com\',\'abcd@1234\',993)'))
 this.echo('ERROR - cannot execute Python command(s)').exit(); this.wait(0);
 py_result = fetch_py_text(); clear_py_text();
 try {py_json = JSON.parse(py_result);} catch(e) {py_json = JSON.parse('null');}}});
 
-casper.then(function() {for (i=0;i<8;i++)
-{casper.then(function() {for_loop_signal = '[CONTINUE_SIGNAL][i]';});
-(function (i) { // start of IIFE pattern
-{ // start of code block
-
-casper.then(function() {{techo('py KeyboardSend(\'down\')');
-py_result = ''; if (!py_step('py KeyboardSend(\'down\')'))
+casper.then(function() {{techo('py datamsg=FetchMail(\'SEEN\',5,sessionname,\'\',\'\',\'\')\nprint(datamsg)');
+py_result = ''; if (!py_step('py datamsg=FetchMail(\'SEEN\',5,sessionname,\'\',\'\',\'\')\nprint(datamsg)'))
 this.echo('ERROR - cannot execute Python command(s)').exit(); this.wait(0);
 py_result = fetch_py_text(); clear_py_text();
 try {py_json = JSON.parse(py_result);} catch(e) {py_json = JSON.parse('null');}}});
 
-} // end of code block
-})(i); // end of IIFE pattern, with dummy marker for break step
-casper.then(function() {for_loop_signal = '[BREAK_SIGNAL][i]';});}});
+casper.then(function() {this.echo(py_result);});
 
-casper.then(function() {{techo('py KeyboardSend(\'enter\')');
-py_result = ''; if (!py_step('py KeyboardSend(\'enter\')'))
+casper.then(function() {{techo('py CloseIMAPSession()');
+py_result = ''; if (!py_step('py CloseIMAPSession()'))
 this.echo('ERROR - cannot execute Python command(s)').exit(); this.wait(0);
 py_result = fetch_py_text(); clear_py_text();
 try {py_json = JSON.parse(py_result);} catch(e) {py_json = JSON.parse('null');}}});

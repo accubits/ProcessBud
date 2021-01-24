@@ -1,17 +1,17 @@
 {
-    "id": 2477952962632,
+    "id": 2075253381160,
     "scene_width": 64000,
     "scene_height": 64000,
     "nodes": [
         {
-            "id": 2477953082760,
-            "title": "Short keys",
-            "pos_x": -449.0,
+            "id": 2075253145496,
+            "title": "Open Session",
+            "pos_x": -304.0,
             "pos_y": -121.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 2478004993272,
+                    "id": 2075253080248,
                     "index": 0,
                     "multi_edges": true,
                     "position": 5,
@@ -20,18 +20,18 @@
             ],
             "start": "1",
             "content": {
-                "value": "windows"
+                "value": "sessionname,imap.gmail.com,dummytestrpa@gmail.com,abcd@1234,993"
             },
-            "op_code": 12
+            "op_code": 6
         },
         {
-            "id": 2478005030808,
-            "title": "Loop start",
-            "pos_x": -256.0,
-            "pos_y": -69.0,
+            "id": 2075253145552,
+            "title": "Fetch Email",
+            "pos_x": -106.0,
+            "pos_y": -51.0,
             "inputs": [
                 {
-                    "id": 2478005059992,
+                    "id": 2075253080304,
                     "index": 0,
                     "multi_edges": false,
                     "position": 2,
@@ -40,7 +40,7 @@
             ],
             "outputs": [
                 {
-                    "id": 2478005059936,
+                    "id": 2075253080416,
                     "index": 0,
                     "multi_edges": true,
                     "position": 5,
@@ -49,18 +49,18 @@
             ],
             "start": "0",
             "content": {
-                "value": "loop count 8"
+                "value": "SEEN,5,sessionname,,,"
             },
-            "op_code": 10
+            "op_code": 7
         },
         {
-            "id": 2478005203128,
-            "title": "Short keys",
-            "pos_x": -70.0,
-            "pos_y": -5.0,
+            "id": 2075253080528,
+            "title": "Close Session",
+            "pos_x": 116.0,
+            "pos_y": 36.0,
             "inputs": [
                 {
-                    "id": 2478005203296,
+                    "id": 2075253080640,
                     "index": 0,
                     "multi_edges": false,
                     "position": 2,
@@ -69,7 +69,7 @@
             ],
             "outputs": [
                 {
-                    "id": 2478005203520,
+                    "id": 2075253080808,
                     "index": 0,
                     "multi_edges": true,
                     "position": 5,
@@ -78,93 +78,23 @@
             ],
             "start": "0",
             "content": {
-                "value": "down"
+                "value": ""
             },
-            "op_code": 12
-        },
-        {
-            "id": 2478005205872,
-            "title": "Loop end",
-            "pos_x": 157.0,
-            "pos_y": 54.0,
-            "inputs": [
-                {
-                    "id": 2478005205928,
-                    "index": 0,
-                    "multi_edges": false,
-                    "position": 2,
-                    "socket_type": 1
-                }
-            ],
-            "outputs": [
-                {
-                    "id": 2478005206152,
-                    "index": 0,
-                    "multi_edges": true,
-                    "position": 5,
-                    "socket_type": 1
-                }
-            ],
-            "start": "0",
-            "content": {
-                "value": "Loop ended"
-            },
-            "op_code": 11
-        },
-        {
-            "id": 2709516165696,
-            "title": "Short keys",
-            "pos_x": 372.0,
-            "pos_y": 100.0,
-            "inputs": [
-                {
-                    "id": 2709516165752,
-                    "index": 0,
-                    "multi_edges": false,
-                    "position": 2,
-                    "socket_type": 1
-                }
-            ],
-            "outputs": [
-                {
-                    "id": 2709516165976,
-                    "index": 0,
-                    "multi_edges": true,
-                    "position": 5,
-                    "socket_type": 1
-                }
-            ],
-            "start": "0",
-            "content": {
-                "value": "enter"
-            },
-            "op_code": 12
+            "op_code": 8
         }
     ],
     "edges": [
         {
-            "id": 2478005113912,
+            "id": 2075253080584,
             "edge_type": 2,
-            "start": 2478004993272,
-            "end": 2478005059992
+            "start": 2075253080248,
+            "end": 2075253080304
         },
         {
-            "id": 2478005203912,
+            "id": 2075253081032,
             "edge_type": 2,
-            "start": 2478005059936,
-            "end": 2478005203296
-        },
-        {
-            "id": 2477963682816,
-            "edge_type": 2,
-            "start": 2478005203520,
-            "end": 2478005205928
-        },
-        {
-            "id": 2709516166200,
-            "edge_type": 2,
-            "start": 2478005206152,
-            "end": 2709516165752
+            "start": 2075253080416,
+            "end": 2075253080640
         }
     ],
     "variable": []

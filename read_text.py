@@ -100,15 +100,6 @@ class readtextWindow(QtWidgets.QMainWindow):
         self.apply_Button.setText("Apply")
         self.apply_Button.clicked.connect(self.writeToNode)
 
-        # self.close_Button = QtWidgets.QPushButton(self)
-        # self.close_Button.setGeometry(QtCore.QRect(330, 350, 75, 31))
-        # self.close_Button.setObjectName("close_Button")
-        # self.close_Button.setText("CANCEL")
-        # self.close_Button.clicked.connect(self.close_properties)
-        #
-        # self.ok_browse_Button.clicked.connect(self.getfiles)
-        #
-        # self.show()
 
     '''
       Get Files when the element type is Image
@@ -130,13 +121,7 @@ class readtextWindow(QtWidgets.QMainWindow):
         self.obj.edit.setText(data)
         self.node_editor.scene.data_changed = 1
 
-        # script = os.path.join("resource", "script.tagui")
-        # with open(script, "a") as f:
-        #     f.write("\nread" + " " + str(
-        #         data) + " to readmsg\necho readmsg\npy_step('readmsg = "'"'"' + readmsg + '"'"'"')\npy begin\nread_info(readmsg)\npy finish")
-        # self.read_textEdit.setText("")
-        # self.close_properties()
-        # main.ProcessWindow.refresh(self)
+
 
     def close_properties(self):
         self.close()

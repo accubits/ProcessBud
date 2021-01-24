@@ -68,7 +68,7 @@ class sendemailWindow(QtWidgets.QMainWindow):
         self.port = QtWidgets.QLineEdit(self)
         self.port.setGeometry(QtCore.QRect(200, 105, 140, 30))
         self.port.setObjectName("host")
-        self.port.setPlaceholderText(" port number eg 587")
+        self.port.setPlaceholderText(" port number eg 465 or 587")
         self.port.setText(send_email_dt[1])
         self.username = QtWidgets.QLineEdit(self)
         self.username.setGeometry(QtCore.QRect(200, 155, 140, 30))
