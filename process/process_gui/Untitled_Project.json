@@ -1,17 +1,17 @@
 {
-    "id": 2075253381160,
+    "id": 2578335236336,
     "scene_width": 64000,
     "scene_height": 64000,
     "nodes": [
         {
-            "id": 2075253145496,
-            "title": "Open Session",
-            "pos_x": -304.0,
-            "pos_y": -121.0,
+            "id": 2578335360560,
+            "title": "Open url",
+            "pos_x": -468.0,
+            "pos_y": -159.0,
             "inputs": [],
             "outputs": [
                 {
-                    "id": 2075253080248,
+                    "id": 2578387271072,
                     "index": 0,
                     "multi_edges": true,
                     "position": 5,
@@ -20,18 +20,18 @@
             ],
             "start": "1",
             "content": {
-                "value": "sessionname,imap.gmail.com,dummytestrpa@gmail.com,abcd@1234,993"
+                "value": "https://www.test.com/"
             },
-            "op_code": 6
+            "op_code": 3
         },
         {
-            "id": 2075253145552,
-            "title": "Fetch Email",
-            "pos_x": -106.0,
-            "pos_y": -51.0,
+            "id": 2578387306032,
+            "title": "Wait",
+            "pos_x": -274.0,
+            "pos_y": -112.0,
             "inputs": [
                 {
-                    "id": 2075253080304,
+                    "id": 2578387306088,
                     "index": 0,
                     "multi_edges": false,
                     "position": 2,
@@ -40,7 +40,7 @@
             ],
             "outputs": [
                 {
-                    "id": 2075253080416,
+                    "id": 2578387306312,
                     "index": 0,
                     "multi_edges": true,
                     "position": 5,
@@ -49,18 +49,18 @@
             ],
             "start": "0",
             "content": {
-                "value": "SEEN,5,sessionname,,,"
+                "value": "2"
             },
-            "op_code": 7
+            "op_code": 2
         },
         {
-            "id": 2075253080528,
-            "title": "Close Session",
-            "pos_x": 116.0,
-            "pos_y": 36.0,
+            "id": 2578387342896,
+            "title": "Read",
+            "pos_x": -77.0,
+            "pos_y": -33.0,
             "inputs": [
                 {
-                    "id": 2075253080640,
+                    "id": 2578387344744,
                     "index": 0,
                     "multi_edges": false,
                     "position": 2,
@@ -69,7 +69,7 @@
             ],
             "outputs": [
                 {
-                    "id": 2075253080808,
+                    "id": 2578387345080,
                     "index": 0,
                     "multi_edges": true,
                     "position": 5,
@@ -78,23 +78,23 @@
             ],
             "start": "0",
             "content": {
-                "value": ""
+                "value": "/html/body/article/div/section/div/div[3]/p to test"
             },
-            "op_code": 8
+            "op_code": 5
         }
     ],
     "edges": [
         {
-            "id": 2075253080584,
+            "id": 2578387342728,
             "edge_type": 2,
-            "start": 2075253080248,
-            "end": 2075253080304
+            "start": 2578387271072,
+            "end": 2578387306088
         },
         {
-            "id": 2075253081032,
+            "id": 2578387345248,
             "edge_type": 2,
-            "start": 2075253080416,
-            "end": 2075253080640
+            "start": 2578387306312,
+            "end": 2578387344744
         }
     ],
     "variable": []

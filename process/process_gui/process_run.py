@@ -122,10 +122,12 @@ class runProcess():
                     key += keydt
                 steps = key
 
-
-
             else:
                 steps = node_dt['title'] + " " + node_dt['content']['value'] + "\n"
+                if node_dt['title'] == 'Read':
+                    stored_out = node_dt['content']['value'].split()
+                    stored_out = stored_out[-1]
+                    steps = steps + "echo " + stored_out + "\n"
             if file_empty == 0:
                 run_cmd += "\n"
             run_cmd += steps

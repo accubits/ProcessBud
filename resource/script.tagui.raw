@@ -1,11 +1,4 @@
-py begin
-sessionname= OpenIMAPSession('imap.gmail.com','dummytestrpa@gmail.com','abcd@1234',993)
-py finish
-py begin
-datamsg=FetchMail('SEEN',5,sessionname,'','','')
-print(datamsg)
-py finish
-echo py_result
-py begin
-CloseIMAPSession()
-py finish
+https://www.test.com/
+Wait 2
+Read /html/body/article/div/section/div/div[3]/p to test
+echo test

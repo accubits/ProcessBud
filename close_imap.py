@@ -44,13 +44,6 @@ class closeimapWindow(QtWidgets.QMainWindow):
         self.node_editor.scene.data_changed = 1
 
 
-        # script = os.path.join("resource", "script.tagui")
-        # with open(script, "a") as f:
-        #     f.write(
-        #         "\npy begin\n  CloseIMAPSession('" + sessionname + "')\n py finish")
-        #
-        # self.close_properties()
-        # main.ProcessWindow.refresh(self)
 
     def close_properties(self):
         self.close()

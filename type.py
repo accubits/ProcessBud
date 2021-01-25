@@ -18,9 +18,7 @@ class typeWindow(QtWidgets.QMainWindow):
         self.node_editor = node_editor
         self.obj = obj
         super(typeWindow, self).__init__()
-        # sshFile = os.path.join("style", "style.qss")
-        # with open(sshFile, "r") as fh:
-        #     self.setStyleSheet(fh.read())
+
         if df is None:
             self.keyEvents = pd.DataFrame(columns=['Type', 'Button', 'Coordinates'])
         else:
@@ -98,11 +96,7 @@ class typeWindow(QtWidgets.QMainWindow):
         self.obj.edit.setText(data)
         self.node_editor.scene.data_changed = 1
 
-        # script = os.path.join("resource", "script.tagui")
-        # with open(script, "a") as f:
-        #     f.write("\ntype " + str(data1) + " as " + data2)
-        # self.close_properties()
-        # main.ProcessWindow.refresh(self)
+
 
     def close_properties(self):
         self.close()

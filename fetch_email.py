@@ -11,15 +11,12 @@ import main
 
 
 class fetchemailWindow(QtWidgets.QMainWindow):
-    def __init__(self, obj,node_editor):
+    def __init__(self, obj, node_editor):
         self.node_editor = node_editor
         print(obj)
         self.obj = obj
 
         super(fetchemailWindow, self).__init__()
-        # sshFile = os.path.join("style", "style.qss")
-        # with open(sshFile, "r") as fh:
-        #     self.setStyleSheet(fh.read())
         self.initUI()
 
     def initUI(self):
@@ -93,13 +90,6 @@ class fetchemailWindow(QtWidgets.QMainWindow):
         self.apply_Button.setObjectName("apply_Button")
         self.apply_Button.setText("Apply")
         self.apply_Button.clicked.connect(self.writeToNode)
-        # self.close_Button = QtWidgets.QPushButton(self)
-        # self.close_Button.setGeometry(QtCore.QRect(360, 370, 75, 31))
-        # self.close_Button.setObjectName("close_Button")
-        # self.close_Button.setText("Close")
-        # self.close_Button.clicked.connect(self.close_properties)
-
-        # self.show()
 
     '''
     Script Generation and write to File
@@ -110,7 +100,7 @@ class fetchemailWindow(QtWidgets.QMainWindow):
         address = self.address.text()
         subject = self.subject.text()
         directory = self.directory.text()
-        directory=directory.replace("/", ".")
+        directory = directory.replace("/", ".")
         # directory = re.escape(directory)
         print(directory)
         limit = self.limitcnt.text()
@@ -120,23 +110,11 @@ class fetchemailWindow(QtWidgets.QMainWindow):
             option = 'UNSEEN'
         else:
             option = 'SEEN'
-        # if address=="":
-        #     address=''
-        # elif subject=="":
-        #     subject=''
 
         # data={'option':option,'limit':limit,'sessionname':sessionname,'address':address,'subject':subject,'directory':directory}
         data = str(option) + "," + limit + "," + sessionname + "," + address + "," + subject + "," + directory
         self.obj.edit.setText(data)
         self.node_editor.scene.data_changed = 1
-
-        # script = os.path.join("resource", "script.tagui")
-        # with open(script, "a") as f:
-        #     f.write(
-        #         "\npy begin\ndatamsg=FetchMail('" + option + "'," + limit + "," + sessionname + ",'" + address + "','" + subject +"','" + directory + "')\nprint(datamsg)\npy finish\necho py_result")
-        #
-        # self.close_properties()
-        # main.ProcessWindow.refresh(self)
 
     def close_properties(self):
         self.close()

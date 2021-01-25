@@ -9,14 +9,13 @@ import main
      Wait Operation and its properties
 '''
 
+
 class waitWindow(QtWidgets.QMainWindow):
-    def __init__(self,obj,node_editor):
+    def __init__(self, obj, node_editor):
         self.obj = obj
         self.node_editor = node_editor
         super(waitWindow, self).__init__()
-        # sshFile = os.path.join("style", "style.qss")
-        # with open(sshFile, "r") as fh:
-        #     self.setStyleSheet(fh.read())
+
         self.initUI()
         print(self.obj)
 
@@ -40,13 +39,6 @@ class waitWindow(QtWidgets.QMainWindow):
         self.wait_Apply_Button.setObjectName("wait_Apply_Button")
         self.wait_Apply_Button.clicked.connect(self.writeScript)
         self.wait_Apply_Button.setText("Apply")
-        # self.wait_Close_Button = QtWidgets.QPushButton(self)
-        # self.wait_Close_Button.setGeometry(QtCore.QRect(360, 180, 75, 31))
-        # self.wait_Close_Button.setObjectName("wait_Close_Button")
-        # self.wait_Close_Button.clicked.connect(self.close_properties)
-        # self.wait_Close_Button.setText("CANCEL")
-        # self.show()
-
 
     '''
     Script Generation and write to File
@@ -56,13 +48,6 @@ class waitWindow(QtWidgets.QMainWindow):
         data = self.waittextEdit.text()
         self.obj.edit.setText(data)
         self.node_editor.scene.data_changed = 1
-
-        # script = os.path.join("resource", "script.tagui")
-        # with open(script, "a") as f:
-        #     f.write("\n")
-        #     f.write("wait " + str(data))
-        # self.close_properties()
-        # main.ProcessWindow.refresh(self)
 
     def close_properties(self):
         self.close()

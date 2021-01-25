@@ -19,9 +19,7 @@ class readtextWindow(QtWidgets.QMainWindow):
         self.node_editor = node_editor
         self.obj = obj
         super(readtextWindow, self).__init__()
-        # sshFile = os.path.join("style", "style.qss")
-        # with open(sshFile, "r") as fh:
-        #     self.setStyleSheet(fh.read())
+
         if df is None:
             self.keyEvents = pd.DataFrame(columns=['Type', 'Button', 'Coordinates'])
         else:
@@ -41,9 +39,9 @@ class readtextWindow(QtWidgets.QMainWindow):
             print("empty read Data")
         else:
             self.read_attr = self.obj.edit.text().replace('to', '')
-            self.attr = list(self.type_attr.split(" "))
+            self.attr = list(self.read_attr.split(" "))
             self.read_attr1 = str(self.attr[0])
-            self.read_attr2 = self.attr[1]
+            self.read_attr2 = self.attr[2]
 
         self.read_label = QtWidgets.QLabel(self)
         self.read_label.setGeometry(QtCore.QRect(50, 145, 151, 31))

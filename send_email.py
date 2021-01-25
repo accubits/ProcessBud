@@ -132,13 +132,6 @@ class sendemailWindow(QtWidgets.QMainWindow):
         self.obj.edit.setText(data)
         self.node_editor.scene.data_changed = 1
 
-        # script = os.path.join("resource", "script.tagui")
-        # with open(script, "a") as f:
-        #     f.write(
-        #          "\npy begin\n SendMail(""'"+host+"'"","+port+",""'"+username+"'"",""'"+password+"'"",""'"+to+"'"",""'"+cc+"'"",""'"+bcc+"'"",""'"+subject+"'"",""'"+message+"'"")\npy finish")
-        #
-        # self.close_properties()
-        # main.ProcessWindow.refresh(self)
 
     def close_properties(self):
         self.close()

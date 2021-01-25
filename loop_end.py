@@ -1,7 +1,7 @@
 import os
 
 from PyQt5 import QtCore, QtWidgets
-from PyQt5.QtWidgets import QLineEdit, QCompleter
+
 
 import main
 

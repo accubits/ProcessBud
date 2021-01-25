@@ -24,11 +24,6 @@ class clickWindow(QtWidgets.QMainWindow):
 
         super(clickWindow, self).__init__()
 
-        # self.setSizePolicy(
-        #     QtWidgets.QSizePolicy.MinimumExpanding,
-        #     QtWidgets.QSizePolicy.MinimumExpanding
-        # )
-
         if df is None:
             self.keyEvents = pd.DataFrame(columns=['Type', 'Button', 'Coordinates'])
         else:
@@ -103,16 +98,9 @@ class clickWindow(QtWidgets.QMainWindow):
         self.apply_Button.clicked.connect(self.writeScript)
 
         self.ok_browse_Button.clicked.connect(self.getfiles)
-        # self.scene = Scene()
-        # self.show()
 
     def onChange(self):
-        print("chamge")
-        # changetext=self.click_textEdit.text()
-        # self.obj.edit.setText(changetext)
-
-    # def addNodes(self):
-    #     node1 = Node(self.scene, "My Awesome Node 1", inputs=[0, 0, 0], outputs=[1])
+        print("change")
 
     '''
        Get Files when the element type is Image
@@ -128,31 +116,10 @@ class clickWindow(QtWidgets.QMainWindow):
     '''
 
     def writeScript(self):
-        # from process.process_gui.nodes.click_node import ClickInputContent
 
         data = self.click_textEdit.text()
         self.obj.edit.setText(data)
         self.node_editor.scene.data_changed = 1
-
-        # self.content = ClickInputContent(self)
-        # self.content.edit.setText(data)
-
-        # type = str(self.click_type.currentText())
-        # argument = type.replace(" ", "")
-        #
-        # if argument == "Click":
-        #     c_type = "click"
-        # elif argument == "DoubleClick":
-        #     c_type = "dbclick"
-        # elif argument == "RightClick":
-        #     c_type = "rclick"
-        # elif argument == "Hover":
-        #     c_type = "hover"
-        # script = os.path.join("resource", "script.tagui")
-        # with open(script, "a") as f:
-        #     f.write("\n")
-        #     f.write(c_type + " " + str(data))
-        # self.click_textEdit.setText("")
 
     def close_properties(self):
         self.close()

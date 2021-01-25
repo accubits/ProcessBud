@@ -1,0 +1,38 @@
+[tagui] START  - listening for inputs
+
+[tagui] INPUT  - 
+[1] {"id":1,"method":"Page.setDownloadBehavior","params":{"behavior":"allow","downloadPath":"C:\\Users\\DELL\\PycharmProjects\\ProcessBudDevBranch\\resource"}}
+[tagui] OUTPUT - 
+[1] {"id":1,"result":{}}
+
+[tagui] INPUT  - 
+[2] {"id":2,"method":"Page.navigate","params":{"url":"https://www.test.com/"}}
+[tagui] OUTPUT - 
+[2] {"id":2,"result":{"frameId":"64FEEAB0E68889D4CE17095916429D97","loaderId":"BF75780483030FC8CDD8C5E5ECC7249D"}}
+
+[tagui] INPUT  - 
+[3] {"id":3,"method":"Runtime.evaluate","params":{"expression":"document.title"}}
+[tagui] OUTPUT - 
+[3] {"id":3,"result":{"result":{"type":"string","value":"Find online tests, practice test, and test creation software | Test.com"}}}
+
+[tagui] INPUT  - 
+[4] {"id":4,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/article/div/section/div/div[3]/p',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotLength"}}
+[tagui] OUTPUT - 
+[4] {"id":4,"result":{"result":{"type":"number","value":1,"description":"1"}}}
+
+[tagui] INPUT  - 
+[5] {"id":5,"method":"Runtime.evaluate","params":{"expression":"document.evaluate('/html/body/article/div/section/div/div[3]/p',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotItem(0).textContent || document.evaluate('/html/body/article/div/section/div/div[3]/p',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotItem(0).innerText || document.evaluate('/html/body/article/div/section/div/div[3]/p',document,null,XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,null).snapshotItem(0).value || ''"}}
+[tagui] OUTPUT - 
+[5] {"id":5,"result":{"result":{"type":"string","value":"From simple training, testing, and certification tests to managing sophisticated courses and programs, Gauge is the scalable and \u2028customizable solution for organizations of all sizes."}}}
+
+[tagui] INPUT  - 
+[6] {"id":6,"method":"Runtime.evaluate","params":{"expression":"document.location.href"}}
+[tagui] OUTPUT - 
+[6] {"id":6,"result":{"result":{"type":"string","value":"https://www.test.com/"}}}
+
+[tagui] INPUT  - 
+[7] {"id":7,"method":"Runtime.evaluate","params":{"expression":"document.title"}}
+[tagui] OUTPUT - 
+[7] {"id":7,"result":{"result":{"type":"string","value":"Find online tests, practice test, and test creation software | Test.com"}}}
+
+[tagui] FINISH - stopped listening
