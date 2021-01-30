@@ -1,5 +1,6 @@
 ![Logo](/Logo/processbud_white.jpg)
 # ProcessBud
+
 ProcessBud is an RPA tool for automating the routine tasks with in the software applications
 
 
@@ -7,7 +8,7 @@ ProcessBud is an RPA tool for automating the routine tasks with in the software 
 - ### Windows
   Are you a user here to check out our Bud?
 
-  The easiest way to install ProcessBud is by using our one-click executable file for Windows which you can get at [Get it here](https://drive.google.com/file/d/1Nfi_zKRW5_TFeUOLImWioku5TzbWTAIh/view?usp=sharing). Please extract the ".zip" file and run "main.exe" file.
+  The easiest way to install ProcessBud is by using our one-click executable file for Windows which you can get [here](https://drive.google.com/file/d/1Nfi_zKRW5_TFeUOLImWioku5TzbWTAIh/view?usp=sharing). Please extract the ".zip" file and run "main.exe" file.
 
 - ### Linux
   Coming Soon 
@@ -28,6 +29,7 @@ ProcessBud is an RPA tool for automating the routine tasks with in the software 
 
 * All major dependencies for this project are included in requirement.txt  
 * Ensure you have the [Extension](https://github.com/accubits/ProcessBud/blob/master/Extension.zip) file extracted to where the source files are located  
+
   ```bash
   pip install -r requirements.txt
   ```
@@ -45,6 +47,8 @@ Please read CONTRIBUTING.md for details on our code of conduct, and the process 
 ## Authors
 
 [@Vaishnavi G.P.](https://github.com/vaishnavigp)
+
+[@Asish Binu ](https://github.com/asishRye)
 
 ## License
 
