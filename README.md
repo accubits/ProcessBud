@@ -3,6 +3,8 @@
 
 ProcessBud is an RPA tool for automating the routine tasks with in the software applications
 
+![gifdemo](Logo/demo.gif)
+
 
 ## Getting Started
 - ### Windows
